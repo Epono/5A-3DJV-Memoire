@@ -1,0 +1,52 @@
+\begin{thebibliography}{10}
+
+\bibitem{hardware:cdromspeed}
+Computer Hope.
+\newblock Cd-rom transfer speeds, 2012.
+
+\bibitem{hardware:dvdromspeed}
+Gabriel Torres.
+\newblock Measuring cd-rom and dvd-rom performance, 11 2004.
+
+\bibitem{hardware:bdromspeed}
+Wikipedia.
+\newblock Blu-ray disc, 2013.
+
+\bibitem{hardware:hddspeed}
+Wikipedia.
+\newblock Hard disk drive, 2013.
+
+\bibitem{hardware:ssdspeed}
+Wikipedia.
+\newblock Solid-state drive, 2013.
+
+\bibitem{industry:streaming-for-loading}
+Fredrik~Lönn (Gamasutra).
+\newblock Streaming for loading in next generation games, 2000.
+
+\bibitem{industry:justcause-streaming}
+Gamasutra.
+\newblock About streaming in just cause, 2013.
+
+\bibitem{industry:dungeonsiege-streaming}
+Scott Bilas.
+\newblock About streaming in dungeon siege, 2003.
+
+\bibitem{compression:images-compression-formats}
+Paula Aguilera.
+\newblock Comparison of different image compression formats.
+
+\bibitem{compression:meshes}
+Pierre Alliez.
+\newblock Meshes compression, 2005.
+
+\bibitem{compression:video}
+Nguyen Thi~Anh Tuyet.
+\newblock Compression vidéo pour des images de synthèse, optimisation de
+  débit, 2010.
+
+\bibitem{compression:textures}
+Lars Weinand.
+\newblock 3dc : compression et normal map, 2004.
+
+\end{thebibliography}
