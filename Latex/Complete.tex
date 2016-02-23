@@ -219,6 +219,11 @@ On peut distinguer les architectures monocouche ou multicouche. Les organisation
 Il existe plusieurs stratégies d’apprentissage pour un réseau de neurones artificiel :
 \begin{itemize}
 	\item \textbf{L’apprentissage supervisé} : Cette stratégie implique un professeur plus intelligent que le réseau lui-même, qui servira de superviseur pour l’apprentissage du réseau de neurones. Par exemple, dans le cas de la reconnaissance faciale, le professeur connaît déjà les noms des personnes qu’il montre au réseau de neurones. Il peut ainsi comparer les réponses données par le réseau et déterminer si des ajustements sont à faire.
+	
+	\item \textbf{L’apprentissage non supervisé} : Cette technique est requise lorsqu’il n’existe pas d’exemples d’ensembles de données possédant des réponses connues. Prenons par exemple la recherche d’un motif caché dans un ensemble de données. Une application de cela est le « clustering », c’est-à-dire la division en groupes d’un ensemble d’éléments suivant une disposition inconnue.
+		
+	\item \textbf{L’apprentissage par renforcement} : Cette stratégie est basée sur l’observation. Prenons par exemple un petit robot circulant à travers un labyrinthe. Si le robot tourne à gauche, il obtient une récompense, s’il tourne à droite il hérite d’un malus. On peut supposer que le robot apprendra avec le temps à tourner à gauche. Son réseau de neurones prend une décision avec une valeur d’entrée (tourner à gauche ou à droite) et observe son environnement (récompense ou malus). Si l’observation est négative, le réseau peut ajuster les valeurs des poids entre les unités du réseau afin d’effectuer un choix différent la prochaine fois. L’apprentissage par renforcement est une technique commune dans le domaine de la robotique.
+	Cette capacité qu’a le réseau de neurones à apprendre, à faire des ajustements sur sa propre structure à travers le temps, est ce qui le rend si utile dans le domaine de l’intelligence artificielle.
 \end{itemize}
 
 Avantages
