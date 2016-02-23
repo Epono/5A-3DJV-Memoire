@@ -306,15 +306,15 @@ Lorsqu’un PNJ répète sans cesse le même dialogue au joueur, celui-ci est ra
 
 Toutes ces actions, souvent sans le vouloir, cassent le quatrième mur, et mettent fin à ce que l’on appelle la Suspension Consentie de l’Incrédulité (aussi connue sous le nom de Suspension of disbelief en anglais). Il s’agit d’une sorte de contrat que le joueur signe avec l’œuvre de fiction (que ce soit un jeu, un film, un livre), dans lequel le joueur accepte de mettre de côté son scepticisme le temps de la consultation de l’œuvre en question. 
 
-Il peut ainsi s’immerger dans un univers avec des éléments imaginaires, pour peu que ceux-ci restent crédibles, et que les règles qui régissent l’œuvre restent constantes.
-Lorsque ce contrat est rompu (par définition, il ne peut être rompu que par l’œuvre de fiction), il est difficile de faire replonger un joueur dans l’univers du jeu, avec lequel il restera toujours un peu distant, et cela renforce le solipsisme du joueur.
-
 \begin{figure}[!h]%
 	\begin{center} 
-		\includegraphics[width=0.60\columnwidth]{images/repeat2.png}%
+		\includegraphics[width=0.42\columnwidth]{images/repeat2.png}%
 		\caption{Why RPG NPCs Always Repeat Themselves, de Dorkly}%
 	\end{center}
 \end{figure}
+
+Il peut ainsi s’immerger dans un univers avec des éléments imaginaires, pour peu que ceux-ci restent crédibles, et que les règles qui régissent l’œuvre restent constantes.
+Lorsque ce contrat est rompu (par définition, il ne peut être rompu que par l’œuvre de fiction), il est difficile de faire replonger un joueur dans l’univers du jeu, avec lequel il restera toujours un peu distant, et cela renforce le solipsisme du joueur.
 
 \newpage
 \subsubsection{Solipsisme}
@@ -388,7 +388,7 @@ Mais lorsqu’un humain voit un autre être qui lui ressemble, il ne peut s’em
 
 De par son côté de plus en plus évolutif et complexe, il est parfois difficile de prévoir tous les résultats possibles d’une interaction du joueur avec l’IA, ce qui donne parfois lieu à une sorte de gameplay émergent, avec des PNJ au comportement imprévisible, même pour les créateurs.
 
-Si dans certains jeux, cet aspect peut presque passer inaperçu (Fable), d’autres jeux reposent essentiellement sur ce principe (Evie).
+Si dans les jeux, cet aspect peut presque passer inaperçu, comme dans Fable et n'est pas très présent, certains programmes reposent essentiellement sur ce principe, comme le chatbot Evie (Evie n'est pas un jeu vidéo au sens classique du terme, mais cela reste un programme ludique avec lequel le joueur peut interagir).
 
 \newpage
 \subsubsection{Fable, un monde plus vivant qu'il n'y paraît}
@@ -466,10 +466,17 @@ En 1997, Rollo Carpenter, un informaticien britannique, crée Jabberwacky. C’e
 
 Ce n’est que onze ans plus tard, en 2008 que Rollo Carpenter met en ligne Cleverbot, descendant spirituel de Jabberwacky. Celui-ci dispose également d’une base de données des conversations avec les utilisateurs parmi lesquelles il va chercher la réponse la plus appropriée, mais a également une notion de contexte, grâce à un système de mémoire à court terme, qui donne un poids plus important aux conversations récentes.
 
+\newpage
+\begin{figure}[!h]%
+	\begin{center} 
+		\includegraphics[width=0.60\columnwidth]{images/jabberwacky.jpg}%
+		\caption{Jabberwacky, en pleine discussion}%
+	\end{center}
+\end{figure}
+
 C'est également à ce moment que Existor voit le jour, fondé par Rollo Carpenter, entreprise qui se donne pour objectif de développer des technologies pour arriver à un niveau de conversation humain.
 
 Ainsi, c’est en 2015 que Evie (Electronic Virtual Interactive Entity), la petite sœur de Cleverbot, voit le jour. Devant la quantité de données que les différents chatbot de Existor récoltent chaque jour (5.5 millions de conversations par jour), et le nombre impressionnant de 1.5 milliards de conversations enregistrées, les développeurs de Existor ont commencé à utiliser des techniques de Machine Learning. 
-Dans un premier temps, ils s’en sont servi pour chercher des motifs récurrents dans les phrases, puis, à l’aide de RNNLMs (Recurrent Neural Network Language Models), ils ont pu estimer les probabilités que tels mots se suivent, afin de former une phrase plus naturelle.
 
 \begin{figure}[!h]%
 	\begin{center} 
@@ -478,36 +485,32 @@ Dans un premier temps, ils s’en sont servi pour chercher des motifs récurrent
 	\end{center}
 \end{figure}
 
+Dans un premier temps, ils s’en sont servi pour chercher des motifs récurrents dans les phrases, puis, à l’aide de RNNLMs (Recurrent Neural Network Language Models), ils ont pu estimer les probabilités que tels ou tels mots se suivent, afin de former une phrase plus naturelle.
+
+Ainsi, même si les réponses de Evie sont de plus naturelles, le joueur ne sait jamais trop jusqu'où une conversation avec elle peut aller. Comme dans une discussion naturelle, le sujet change au fur et à mesure de la conversation, parfois de manière brusque quand Evie ne comprend pas bien la phrase du joueur, et le joueur peut très vite se retrouver dans une situation dans laquelle Evie l'insulte, ou en train de se battre pour avoir le dernier mot :
+
+\begin{itemize}
+	\item Evie : Oui
+	\item Joueur : Non
+	\item Evie : Oui
+	\item Joueur : Non
+	\item etc ...
+\end{itemize}
+
 %------------------------------------------------
 
 \newpage
 \section{Apports du mémoire}
-Le mémoire nous a permis d'en apprendre beaucoup plus sur les techniques de développement et de distribution des jeux vidéos. Plus que de simplement voir les techniques utilisées dans l'industrie, nous avons pu comprendre pourquoi les développeurs faisaient certains choix.
+Lors de nos recherches pour écrire ce mémoire, nous avons non seulement approfondi énormément nos connaissances sur beaucoup de sujets qui touchent à l'intelligence artificielle, notamment le machine learning, mais nous avons également découvert plusieurs applications dont nous n'avions aucune idée de l'existence, comme Angelina, l'IA qui développe des jeux.
 
-Ainsi, nous savons à présent comment nous y prendre au niveau du développement console passé et à venir, et comment organiser nos divers projets de jeux. Par exemple, nous comprenons pourquoi le jeu réalisé à l'ESGI l'année dernière sur PSP était soumis à des temps de chargements relativement longs, et nous pouvons maintenant les améliorer, voir les réduire à un niveau imperceptible par le joueur.
-
-Ce sujet aborde un problème hautement technique mais assez méconnu, les joueurs et les développeurs étant souvent plus enclin à remarquer les prouesses graphiques ou liées au gameplay.
-
-Cependant il s'agit d'un sujet vaste, et nous n'avons pu en explorer que la surface. Mais la connaissance de cette surface nous a permis d'avoir le minimum requis pour être indépendant dans nos recherches et nos développements, et nous donne la possibilité d'aborder notre propre façon de voir et de construire les projets que nous allons réaliser par la suite.
+Cependant, il s'agit d'un sujet tellement vaste que n'avons fait qu'en gratter la surface.
 
 %------------------------------------------------
 
 \newpage
 \section{Conclusion}
 
-Les jeux ont beaucoup évolués depuis leur création. Aujourd'hui, ils sont très volumineux car ils contiennent un nombre de ressources très élevé qui sont souvent réalisées en haute résolution afin d'obtenir une qualité visuelle importante. Il est donc judicieux de s'intéresser aux différentes techniques permettant de gérer au mieux ces ressources. Nous avons vu que de nombreux paramètres (tels que les composants physiques de la console ou de la machine, le support de stockage contenant les données du jeu, etc.) doivent être pris en compte pour choisir les techniques les plus efficaces à utiliser. 
 
-Le but pour les développeurs est de réussir à optimiser le volume des données mais surtout les temps de chargement de celles-ci au cours d'une session de jeu. Il est intéressant de noter que les techniques d'optimisation sont très diverses et ne s'appliquent pas uniquement aux données du jeu. En effet, bien que la compression est une méthode très utilisée par les développeurs, il est possible d'optimiser le temps de chargement en organisant correctement les données sur le support de stockage. Il est même courant d'adapter le level design pour effectuer un chargement lorsque le joueur atteint une zone prédéfinie.
-
-En général, le support de stockage, les consoles ou machines sur lesquelles doivent tourner les jeux sont fixés par les éditeurs et le marché actuel, les développeurs doivent s'adapter pour produire un jeu stable. Il s'agit donc pour eux de bien comprendre comment fonctionnent les différents composants de la machine tels que le disque dur, le lecteur de disque et le processeur. En effet, d'une machine à l'autre et selon le support de stockage utilisé il sera plus ou moins judicieux d'organiser les données de manière à ce qu'elles soient chargées les unes à la suite des autres pour éviter que le lecteur ait besoin d'effectuer un nouveau tour pour se repositionner.
-
-En ce qui concerne la compression, elle est indispensable pour les jeux actuels. En effet, le volume de données peut atteindre 20 Go pour certains jeux les plus vendus et parfois plus. Même si les disques utilisés par les consoles possèdent une grosse capacité de stockage, il faut tout de même compresser les données afin de réduire leur poids et surtout pour augmenter la vitesse de chargement. Comme souvent, toute compression de données équivaut à une perte d'information et donc de qualité. Il faut alors savoir comment ajuster le taux de compression pour obtenir un bon rapport qualité/vitesse de transfert. Nous avons pu voir qu'il existe de nombreux formats de compression pour chaque type de données et que tous ont leurs avantages et leurs inconvénients. Par exemple, il est plus intéressant d'utiliser le format PNG plutôt que JPG pour les images, pour la compression de texture, il est possible d'utiliser les compressions DXT ou 3Dc, en sachant que les textures de type normal map seront de meilleure qualité avec la compression 3Dc.
-
-Nous avons aussi constaté que les développeurs utilisent parfois directement le level design pour permettre un chargement en tâche de fond en fonction des actions du joueur. Dans le jeu Dead Space, certaines portes s'ouvrent au bout d'un certain temps. Il s'agit d'une technique basée sur celle du jeu Resident Evil où une animation est lancée à chaque fois que le joueur ouvre une porte. Cette méthode permet en quelque sorte de créer l'illusion qu'il n'y a aucun chargement.
-
-Il est intéressant de constater que l'accumulation de toutes ces techniques permet d'optimiser au maximum le jeu final tout en conservant sa qualité visuelle. Ces techniques peuvent être difficiles à mettre en place mais elles sont indispensables pour de gros jeux possédant une quantité impressionnante de données. Ces méthodes sont aussi conseillées pour des jeux moins ambitieux en terme de contenu.
-
-A force d'améliorer ou de créer de nouvelles techniques d'optimisation, les jeux actuels possèdent peu de temps de chargement ce qui est un atout majeur pour la fluidité et le dynamisme. Puisque les jeux vidéo et la nouvelle technologie évoluent d'année en année, nous pouvons espérer que dans un futur proche, la vitesse de transfert des données sera tellement rapide que le chargement deviendra invisible et donc inexistant aux yeux des joueurs.
 
 %----------------------------------------------------------------------------------------
 %	BIBLIOGRAPHY
