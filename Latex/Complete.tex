@@ -144,9 +144,9 @@ Dans les années 1970, les premiers jeux avec des modes 1 joueur apparaissent. L
 Dans la fin des années 1970 et jusqu’au début des années 1990 : c’est l’âge d’or des jeux d’arcade. Les IA se popularisent. Nombre de jeux (comme Space Invaders en 1978 et Galaxian en 1979) intégraient maintenant une IA plus complexe avec différents niveaux de difficulté et de nombreux modèles de mouvement. 
 
 \begin{itemize}
-	\item Pacman (1980) a introduit un pattern IA pour les jeux de labyrinthe, avec des personnalités distinctes pour chaque ennemi.
-	\item Karate Champ (1984) a quant à lui introduit le pattern pour les jeux de combat.
-	\item First Queen (1988) était un RPG dans lequel des personnages contrôlés par l’IA devaient suivre un leader. Ce type d’IA ayant été amélioré par Dragon Quest IV (1990) avec le system « Tactics » (ajustement des routines utilisées par les IA) puis Secret of Mana (1993).
+	\item \textbf{Pacman} (1980) a introduit un pattern IA pour les jeux de labyrinthe, avec des personnalités distinctes pour chaque ennemi.
+	\item \textbf{Karate Champ} (1984) a quant à lui introduit le pattern pour les jeux de combat.
+	\item \textbf{First Queen} (1988) était un RPG dans lequel des personnages contrôlés par l’IA devaient suivre un leader. Ce type d’IA ayant été amélioré par Dragon Quest IV (1990) avec le system « Tactics » (ajustement des routines utilisées par les IA) puis Secret of Mana (1993).
 \end{itemize}
 
 A partir des années 1990, l’émergence de nouveaux genres de jeux vidéo a conduit à l’utilisation d’outils plus sophistiqués tels que les automates finis. Les stratégies en temps réel requéraient la prise en compte de nombreuses contraintes : de nombreux objets, des informations incomplètes, la recherche de chemin, l’économie du nombre de calculs lors de la planification, etc. 
@@ -169,18 +169,11 @@ Longtemps délaissée au profit des graphismes des jeux vidéo, cette branche co
 \end{itemize}
 
 \newpage
-\subsubsection{Une nouvelle perspective pour l’IA}
-
-Machine learning avec du Deep Neural Network
-
-IA with procedural content
-
-\newpage
 \section{Les applications possibles prometteuses}
 
 Dans cette section, nous aborderons certaines des techniques les plus utilisées dans les jeux vidéo, ou qui 
 
-\subsection{Le Machine Learning, l’IA qui apprend en même temps que le joueur}
+\subsection{Le Machine Learning}
 
 \subsubsection{Les réseaux de neurones}
 
@@ -280,13 +273,13 @@ Cependant il existe une solution pour optimiser les poids d’un réseau de neur
 \subsubsection{Les arbres de décision avec l’apprentissage par renforcement}
 
 \newpage
-\subsection{Dynamic Game Difficulty Balancing, l’IA qui s’adapte au niveau du joueur}
+\subsection{Dynamic Game Difficulty Balancing}
 
-Dans beaucoup de jeux d’aujourd’hui, afin de toucher un public plus large, allant du casual gamer au hardcore gamer, la possibilité est donnée au joueur de choisir une difficulté au début du jeu. Toutefois, si la courbe de difficulté augmente trop vite pour le joueur, il peut éprouver de la frustration et rester bloqué, alors que si la difficulté augmente trop lentement, le joueur peut s’ennuyer face à un jeu trop facile.
+Dans beaucoup de jeux d’aujourd’hui, afin de toucher un public plus large allant du casual gamer au hardcore gamer, la possibilité est donnée au joueur de choisir une difficulté au début du jeu. Toutefois, si la courbe de difficulté augmente trop vite pour le joueur, il peut éprouver de la frustration et rester bloqué, tandis que si la difficulté augmente trop lentement, le joueur peut s’ennuyer face à un jeu trop facile.
 
-Même s’il est possible dans certains jeux de modifier la difficulté en cours de jeu, peu de joueurs l’utilisent, par fierté, et finissent soit par se débloquer, soit par abandonner devant un jeu qu’ils trouvent injuste.
+Même s’il est possible dans certains jeux de modifier la difficulté en cours de jeu, peu de joueurs l’utilisent, par fierté, et finissent soit par se débloquer après une session de jeu peu agréable, soit par abandonner devant un jeu qu’ils trouvent injuste.
 
-C’est pour résoudre ce problème que des jeux utilisent le Dynamic Game Difficulty Balancing. C’est une technique qui permet de changer dynamiquement certains éléments (comportement de PNJ, paramètres, etc) au cours du jeu, pour mieux s’adapter au niveau de compétence du joueur, ou même (plus rarement) à son style de jeu. Son but est donc de moduler la difficulté, afin que le jeu représente un challenge intéressant du début à la fin et garder le joueur dans ce que l'on appelle le flow.
+C’est pour résoudre ce problème que des jeux utilisent le Dynamic Game Difficulty Balancing. C’est une technique qui permet de changer dynamiquement certains éléments (comportement de PNJ, paramètres, etc ...) au cours du jeu, pour mieux s’adapter au niveau de compétence du joueur, ou même (plus rarement) à son style de jeu. Son but est donc de moduler la difficulté, afin que le jeu représente un challenge intéressant du début à la fin et de garder le joueur dans ce que l'on appelle le flow (état dans lequel le joueur est concentré sur le jeu et ne voit pas le temps passer).
 
 \begin{figure}[!h]%
 	\begin{center} 
@@ -295,7 +288,7 @@ C’est pour résoudre ce problème que des jeux utilisent le Dynamic Game Diffi
 	\end{center}
 \end{figure}
 
-S’il existe presque autant d’approches différentes à cette technique que de jeux qui l’utilisent, il faut néanmoins dans tous les cas régulièrement déterminer et analyser les performances du joueur au moyen d’une fonction heuristique, qui fournit rapidement un résultat concret, même si pas optimal. Dans un jeu, les performances sont critiques, donc c’est bien. 
+S’il existe presque autant d’approches différentes à cette technique que de jeux qui l’utilisent, il faut néanmoins dans tous les cas régulièrement déterminer et analyser les performances du joueur au moyen d’une fonction heuristique, qui fournit rapidement un résultat concret, même si pas optimal (très utilisé pour les jeux, dans lesquels les performances sont critiques).
 
 De plus, des études ont montré qu’une fonction heuristique déterminée à l’aide d’un réseau de neurones artificiels (ANN) donne de meilleurs résultats qu’une fonction heuristique faite par des humains.
 Il est ainsi possible, afin de moduler le comportement des PNJ, de pondérer la probabilité de ses actions en fonction des performances du joueur.
@@ -310,61 +303,90 @@ Par exemple, dans un jeu de tir à la première personne (FPS), le jeu pourra pr
 	\item etc ...
 \end{itemize}
 
-Et à partir de ces informations, si le jeu trouve que le joueur s’en sort bien, il pourra décider de :
+Et à partir de ces informations, en fonction de comment le joueur se débrouille, le jeu pourra décider de :
 
 \begin{itemize}
-	\item Faire apparaître plus d’ennemis
-	\item Rendre les ennemis plus résistants et/ou intelligents
-	\item Faire apparaître moins de caisses de munitions et/ou kits de santé
+	\item Faire apparaître plus ou moins d’ennemis
+	\item Rendre les ennemis plus ou moins résistants et/ou intelligents
+	\item Faire apparaître plus ou moins de caisses de munitions et/ou kits de santé
 	\item etc ...
 \end{itemize}
 
-A l’inverse, s’il remarque que le joueur éprouve des difficultés, il pourra :
-
-\begin{itemize}
-	\item Diminuer le nombre maximum d’ennemis présents en même temps
-	\item Rendre les ennemis moins résistants et/ou moins intelligents
-	\item Faire apparaître plus de caisses de munitions et/ou kits de santé
-	\item etc ...
-\end{itemize}
-
-Toutefois, cette méthode a tout de même quelques inconvénients. Si ce n’est pas assez transparent, le joueur pourra en tirer parti, par exemple en faisant exprès de mal jouer avant une rencontre avec un boss pour le rendre plus simple. 
-
-Malheureusement, à cause des nombreuses problématiques de game design que cela soulève, le nombre de jeux qui utilisent cette technique est assez restreint.
-
-\newpage
-\subsubsection{Mario Kart}
-
-Mario Kart est un jeu de course dans lequel le joueur peut obtenir des capacités pour l’aider en passant sur des gros cubes. Ces cubes donnent une capacité aléatoire, mais dépendant de la position du joueur dans la course. Ainsi, si le joueur est bien placé, il aura des chances augmentées de recevoir des capacités considérées “faibles” comme une banane ou une carapace verte, tandis que si le joueur se retrouve à la fin du classement, ce sont ses chances de recevoir des capacités considérées “fortes” qui augmentent (exemple)
-
-Les PNJ ont également droit à ces probabilités modifiées, mais ont en plus un comportement qui s’adapte en fonction de leur classement. En effet, un PNJ en tête de classement verra sa vitesse maximum  réduite et sera moins agressif, tandis qu’un PNJ en bas du classement aura une vitesse maximum augmentée et deviendra plus agressif.
-
-Malheureusement cette dernière technique provoque un effet nommé “rubber band effect”  (effet élastique), car le joueur peut avoir l’impression que tous les autres PNJ sont liés à lui par un élastique, puisqu’ils ne peuvent pas prendre trop d’avance ou trop de retard par rapport à lui.
-
-%https://www.reddit.com/r/n64/comments/2rp1zg/how_are_mario_kart_64_items_distributed/
-%https://docs.google.com/spreadsheets/d/1rQjYBQdrK8RI6801io_7D0tShweqjDMWyuwCn46oMyE/edit#gid=0
-%http://www.hindawi.com/journals/ijcgt/2012/625476/
+Toutefois, cette méthode a tout de même quelques inconvénients. Si les joueurs sont au courant de l'existence de cette méthode dans le jeu, ils peuvent en tirer profit, par exemple en faisant exprès de mal jouer avant une rencontre avec un boss pour le rendre plus simple. Il est donc possible que des jeux utilisent ce système mais ne le mentionnent pas afin d'éviter les abus. De plus, à cause des nombreuses problématiques de game design que cela soulève, le nombre de jeux qui utilisent cette technique est assez restreint.
 
 \newpage
 \subsubsection{Resident Evil 5}
 
-Dans Resident Evil 5, il est possible de sélectionner une difficulté de départ, mais celle-ci n’est pas fixe. Pendant le jeu, un système appelé “Difficulty Scale” analyse et note la performance du joueur sur une échelle de 1 à 10 et adapte la difficulté du jeu en modifiant certains paramètres comme :
+Dans Resident Evil 5 (2009), il est possible de sélectionner une difficulté de départ, mais celle-ci n’est pas fixe. Pendant le jeu, un système appelé « Difficulty Scale » analyse et note la performance du joueur sur une échelle de 1 à 10 et adapte la difficulté du jeu en modifiant certains paramètres comme :
 
 \begin{itemize}
-	\item La résistance et les dommages des ennemis
-	\item Le comportement des ennemis
+	\item La résistance et les dommages des ennemis.
+	\item Le comportement et panel d'attaque des ennemis.
 \end{itemize}
 
-Ici, la difficulté choisie au départ sert de bornes pour la difficulté dynamique. Ainsi, si le joueur choisit la difficulté minimale, même s’il se débrouille très bien par la suite, la difficulté dynamique ne pourra pas dépasser un certain niveau. Et inversement si le joueur choisit une difficulté initiale élevée, et que par la suite ne fait que mourir, la difficulté ne pourra pas baisser en dessous d’un certain niveau.
+Ici, la difficulté choisie au départ sert de bornes pour la difficulté dynamique. Ainsi, si le joueur choisit la difficulté minimale, même s’il se débrouille très bien par la suite, la difficulté dynamique ne pourra pas dépasser un certain seuil. Et inversement si le joueur choisit une difficulté initiale élevée, et que par la suite ne fait que mourir, la difficulté ne pourra pas baisser en dessous d’un certain niveau.
 
-trouver une image
+Le tableau ci-dessous indique les notes associés aux différentes actions du joueur :
+
+\begin{center} 
+	\begin{tabular}{|l|r|}
+		\hline
+		Action 									&Points associés\\
+		\hline
+		Mort du joueur							&-1200\\
+		Joueur proche de la mort				&-650\\
+		Subit des dégats lourds					&-500\\
+		Subit des dégats légers					&-400\\
+		\hline
+		Touche un ennemi						&+2\\
+		Touche un ennemi à un endroit sensible	&+30\\
+		Évite une attaque						&+45\\
+		Tue un ennemi							&+80\\
+		Fait un coup critique					&+100\\
+		\hline
+	\end{tabular}
+\end{center}
 
 \newpage
-\subsubsection{Left 4 Dead}
+\subsubsection{La série Mario Kart : objets et PNJ}
 
-Le meilleur exemple actuel (connu) pour ce type d’IA se trouve du côté de Valve, et plus précisément dans leur FPS de survival horror, Left 4 Dead, sorti en 2008. Dans celui ci, un groupe de 4 joueurs (dont certains peuvent être des PNJ) doit se frayer un chemin dans un niveau infesté de zombies en tout genre.
+Mario Kart est un jeu de course dans lequel le joueur peut obtenir des objets pour l'aider en roulant sur un cube. Ces cubes donnent un objet aléatoire, mais dépendant de la position du joueur dans la course. Ainsi, si le joueur est bien placé, il aura des chances augmentées de recevoir des objets considérées « faibles », comme une banane ou une carapace verte, tandis que si le joueur se retrouve à la fin du classement, ce sont ses chances de recevoir des objets considérées « fortes », comme la fameuse tortue bleue qui augmentent.
 
-“AI Director” (que nous appellerons par la suite “réalisateur”) est le nom de cette intelligence artificielle qui analyse constamment les performances des joueurs afin de proposer une expérience plus intéressantes. Mais il ne se contente pas d’analyser les performances individuelles, il analyse également la performance collective.
+ Le tableau ci-dessous représente les probabilités d'obtenir un objet en fonction de la position dans la course dans Mario Kart 64.
+
+\begin{center} 
+	\begin{tabular}{|l|c|c|c|c|c|c|c|c|}
+		\hline
+		Capacité 				&1\ier{}&2\up{e}&3\up{e}&4\up{e}&5\up{e}&6\up{e}&7\up{e}&8\up{e}\\
+		\hline
+		Banane (1)				&30\%	&		&		&		&		&		&		&		\\
+		Bananes (5)				&5\%	&5\%	&		&		&		&		&		&		\\
+		Caparace verte (1)		&30\%	&5\%	&		&		&		&		&		&		\\
+		Carapaces vertes (3)	&5\%	&10\%	&10\%	&		&		&		&		&		\\
+		Caparace rouge (1)		&5\%	&15\%	&20\%	&15\%	&10\%	&		&		&		\\
+		Caparaces rouges (3)	&		&20\%	&20\%	&20\%	&20\%	&20\%	&20\%	&20\%	\\
+		Carapace bleue			&		&		&		&5\%	&5\%	&10\%	&10\%	&15\%	\\
+		Éclair 					&		&5\%	&5\%	&10\%	&10\%	&15\%	&20\%	&20\%	\\
+		Fausse boîte à objets	&10\%	&5\%	&		&		&		&		&		&		\\
+		Étoile 					&		&5\%	&10\%	&15\%	&15\%	&20\%	&30\%	&30\%	\\
+		Boo						&5\%	&5		&		&		&		&		&		&		\\
+		Champignon Turbo (1)	&10\%	&5\%	&5\%	&5\%	&5\%	&		&		&		\\
+		Champignons Turbo (3)	&		&15\%	&20\%	&20\%	&25\%	&25\%	&10\%	&5\%	\\
+		Champignon Turbo doré	&		&5\%	&10\%	&10\%	&10\%	&10\%	&10\%	&10\%	\\
+		\hline
+	\end{tabular}
+\end{center}
+
+Les PNJ ont également droit à ces probabilités modifiées, mais ont en plus un comportement qui s’adapte en fonction de leur classement. En effet, un PNJ en tête de classement verra sa vitesse maximum  réduite et sera moins agressif, tandis qu’un PNJ en bas du classement aura une vitesse maximum augmentée et deviendra plus agressif.
+
+Malheureusement cette dernière technique provoque un effet nommé « rubber band effect » (« effet élastique »), car le joueur peut avoir l’impression que tous les autres PNJ sont liés à lui par un élastique, puisqu’ils ne peuvent pas prendre trop d’avance ou trop de retard par rapport à lui.
+
+\newpage
+\subsubsection{Left 4 Dead et son AI Director}
+
+Le meilleur exemple actuel (connu) pour ce type d’IA se trouve du côté de Valve, et plus précisément dans leur survival horror FPS, Left 4 Dead (2008). Dans celui ci, un groupe de quatre joueurs doit se frayer un chemin dans un niveau infesté de zombies en tout genre.
+
+Cette intelligence artificielle, surnommée « \textbf{\textit{AI Director}} » (que nous appellerons simplement par la suite « \textit{Director} ») analyse constamment les performances des joueurs afin de proposer une expérience plus intéressante. Mais il ne se contente pas d’analyser les performances individuelles, il analyse également la performance collective du groupe.
 
 \begin{figure}[!h]%
 	\begin{center} 
@@ -373,27 +395,44 @@ Le meilleur exemple actuel (connu) pour ce type d’IA se trouve du côté de Va
 	\end{center}
 \end{figure}
 
-L’”AI Director” suit un cycle tout au long de la partie. Dés que les joueurs sortent de la zone de départ, l’étape de “Build Up” commence. Pendant cette étape, un nombre relativement constant de zombies attaque les joueurs. Lorsque le niveau d’intensité du groupe (pression calculée pour chaque joueur, augmente plus les zombies sont proches) atteint un certain seuil, l’étape de “Peak” prend le relais, et plus aucun zombie ne spawn. Après avoir tué la majorité des zombies, c’est finalement le tour de l’étape de “Relax”, qui dure environ 30 secondes, pendant laquelle les joueurs peuvent se soigner et récupérer, après quoi le processus recommence, et ce jusqu’à la fin du niveau.
+Le \textit{Director} suit un cycle tout au long de la partie. Dés que les joueurs sortent de la zone de départ, l’étape de « Build Up » commence. Pendant cette étape, un nombre relativement constant d'ennemis attaque les joueurs. Lorsque le niveau d’intensité du groupe (pression calculée pour chaque joueur, augmente plus les ennemis sont proches) atteint un certain seuil, l’étape de « Peak » est enclenchée et plus aucun ennemi ne spawn. L’étape de « Relax » prend alors le relais pendant environ 30 secondes, durant lesquelles les joueurs peuvent se soigner et récupérer, après quoi le processus recommence, et ce jusqu’à la fin du niveau.
 
-La fonction principale du réalisateur est de s’occuper de l’apparition et du placement des ennemis. Il y a deux catégories d’ennemis, les ennemis communs et les boss. Le réalisateur a deux types de placement, il peut placer des ennemis devant les joueurs, qui errent sans but et attaquent les joueurs à vue, ou les placer sur les côtés et derrière les joueurs, et ceux-ci foncent directement vers les joueurs, même s’ils ne sont pas en vue.
+La fonction principale du \textit{Director} est de s’occuper de l’apparition et du placement des ennemis. Il y a deux catégories d’ennemis, les ennemis communs et les boss. Pour les ennemis communs, il peut décider de placer des ennemis devant les joueurs, qui errent sans but et attaquent les joueurs à vue, ou les placer sur les côtés et derrière les joueurs, et ceux-ci foncent directement vers les joueurs, même s’ils ne sont pas en vue.
 
-Pour ce qui est des boss (Tank et Witch), ils attaquent à vue également, mais le réalisateur ne peut les faire apparaître qu’à certains endroits spécifiques de la carte, le long du chemin principal. En revanche, si les joueurs essayent de les éviter en passant par un chemin parallèle, le réalisateur s’en rendra compte et rendra le boss agressif, qui ira attaquer les joueurs.
+Pour ce qui est des boss, ils attaquent à vue également, mais le il ne peut les faire apparaître qu’à certains endroits spécifiques de la carte, le long du chemin principal. En revanche, si les joueurs essayent de les éviter en passant par un chemin parallèle, le \textit{Director} s’en rendra compte et rendra le boss agressif, qui ira attaquer les joueurs.
 
-De plus, il ne se contente pas de modifier les éléments du gameplay, c’est également lui qui gère les répliques lancées par les personnages, modifie dynamiquement la musique pour s’adapter au moment, ainsi que la position des objets récupérables par les joueurs. Il est aussi responsable de certains effets sonores et visuels, qu’il peut décider d’ajouter pour amplifier la tension.
+\begin{figure}[!h]%
+	\begin{center} 
+		\includegraphics[width=1.0\columnwidth]{images/aiDirector.jpg}%
+		\caption{Exemple d'actions du \textit{Director}}%
+	\end{center}
+\end{figure}
 
-Dans Left 4 Dead 2, il est même capable de modifier dynamiquement l’agencement du niveau et donc de modifier le chemin que les joueurs doivent suivre.
-
-Malheureusement, comme c’est le cas pour Resident Evil 5, ce réalisateur et son fonctionnement étant connu par les joueurs, ceux-ci n’hésitent pas à en tirer profit pour rendre certaines parties du jeu plus simple en faisant exprès de mal jouer pour réduire la difficulté à certains moments critiques du jeu.
+Dans la figure ci-dessus, qui représente le parcours d'un niveau, la barre du haut représente les ennemis que le \textit{Director} a placé lors de la génération du niveau, tandis que la barre du bas représente la présence réelle des ennemis. On peut remarquer que lorsque le niveau d'intensité des joueurs, représenté par la barre du milieu, atteint un certain seuil, l'étape de « Relax » est enclenchée, ce qui fait disparaître les ennemis. À l'inverse, si le niveau d'intensité devient trop bas, le \textit{Director} fait apparaître de nouveaux ennemis.
 
 \newpage
-\subsection{Cheating / Procedural / Data mining}
+De plus, le \textit{Director} ne se contente pas de modifier les éléments du gameplay, c’est également lui qui gère les répliques lancées par les personnages, modifie dynamiquement la musique pour s’adapter au moment, ainsi que la position des objets récupérables par les joueurs. Il est aussi responsable de certains effets sonores et visuels, qu’il peut décider d’ajouter pour amplifier la tension.
+
+le \textit{Director} de Left 4 Dead 2 est même capable de modifier dynamiquement l’agencement du niveau et donc de modifier le chemin que les joueurs doivent suivre.
+
+Malheureusement, son existence et son fonctionnement étant connu par les joueurs, ceux-ci n’hésitent pas à en tirer profit pour rendre certaines parties du jeu plus simple en faisant exprès de mal jouer pour réduire la difficulté à certains moments critiques du jeu.
+
+\begin{figure}[!h]%
+	\begin{center} 
+		\includegraphics[width=0.80\columnwidth]{images/aiDirector2.jpg}%
+		\caption{Le \textit{Director} est parfois méchant}%
+	\end{center}
+\end{figure}
+
+%\newpage
+%\subsection{Cheating / Procedural / Data mining}
 
 \newpage
 \subsection{Des jeux par les IA, pour les IA}
 
 Bientôt, il n’y aura plus du tout besoin d’humains dans la boucle de création et consommation de jeu.
 
-En effet, la prochaine IA dont nous allons parler est une IA capable d’apprendre à joueur à des jeux, tandis que la suivante, très jeune, est capable de développer des jeux (simples) complets.
+En effet, la prochaine IA dont nous allons parler est capable d’apprendre à joueur à des jeux, tandis que la suivante, très jeune, est capable de développer des jeux (simples) complets.
 
 \begin{figure}[!h]%
 	\begin{center} 
@@ -402,24 +441,23 @@ En effet, la prochaine IA dont nous allons parler est une IA capable d’apprend
 	\end{center}
 \end{figure}
 
+\newpage
+\subsubsection{General Video Game Playing, l'IA qui apprend à jouer}
+
+Si les IA capables de jouer à des jeux de société existent depuis longtemps, celles-ci étaient limitées et ne pouvaient jouer qu’à un seul jeu. Ce n’est pas le cas des IA suivant la technique de GGP (\textbf{G}eneral \textbf{G}ame \textbf{P}laying), et son homologue pour les jeux vidéo, la technique de GVGP (\textbf{G}eneral \textbf{V}ideo \textbf{G}ame \textbf{P}laying).
+
+C’est un domaine qui a gagné en popularité ces dernières années, notamment grâce à une IA dotée d’un système de GVGP qui a gagné le prix du public de la compétition annuelle de GGP organisée par l’AAAI (\textbf{A}ssociation for the \textbf{A}dvancement of \textbf{A}rticifial \textbf{I}ntelligence).
+
+Cette IA est notamment capable d’apprendre à jouer à un niveau de Mario, un jeu de plateforme 2D, de s’adapter aux différents obstacles qui le composent, et même d’apprendre certaines mécaniques (sauter sur un Koopa pour le tuer).
+
+Il est également possible d'interagir avec cette IA et de lui poser des questions ou de lui donner des informations sur le jeu.
+
 \begin{figure}[!h]%
 	\begin{center} 
-		\includegraphics[width=0.60\columnwidth]{images/robotdeveloping.jpg}%
-		\caption{Robot développant un jeu (fiction)}%
+		\includegraphics[width=0.60\columnwidth]{images/mario.jpg}%
+		\caption{Chemin }%
 	\end{center}
 \end{figure}
-
-\newpage
-\subsubsection{General Game Playing, l'IA qui apprend à jouer}
-
-Si les IA capables de jouer à des jeux de société existent depuis longtemps, celles-ci étaient limitées et ne pouvaient jouer qu’à un seul jeu. Ce n’est pas le cas des IA suivant la technique de General Game Playing (GGP), et son homologue pour les jeux vidéo, la technique de General Video Game Playing (GVGP).
-
-C’est un domaine qui a gagné en popularité ces dernières années, notamment grâce à une IA doté d’uns système de GVGP qui a gagné le prix du public de la compétition annuelle de GGP organisée par l’AAAI (Association for the Advancement of Articifial Intelligence).
-
-Cette IA est notamment capable d’apprendre à jouer à un niveau de Mario Bros (SNES ?, XXXX ?), un jeu de plateforme 2D, de s’adapter aux différents obstacles qui le composent, et même d’apprendre certaines mécaniques (sauter sur un Koopa pour le tuer).
-
-GROS BLABLA
-PHOTO
 
 %https://en.wikipedia.org/wiki/General_video_game_playing
 %https://en.wikipedia.org/wiki/Artificial_intelligence_(video_games)#In_modern_video_games
@@ -427,6 +465,14 @@ PHOTO
 
 \newpage
 \subsubsection{Angelina, l’IA qui développe des jeux}
+
+
+\begin{figure}[!h]%
+	\begin{center} 
+		\includegraphics[width=0.60\columnwidth]{images/robotdeveloping.jpg}%
+		\caption{Robot développant un jeu (fiction)}%
+	\end{center}
+\end{figure}
 
 Angelina est une IA qui, à partir d’une description en langage naturel, peut générer des jeux de plateforme 2D, avec une ambiance, des graphismes et un gameplay qui respectent (dans une certaine mesure) la description fournie.
 
@@ -446,7 +492,7 @@ Pour arriver à ce résultat, elle analyse la description, <<<DESCRIPTION>>>
 \newpage
 \section{De l’importance de l’IA pour l’immersion du joueur}
 
-Dans cette partie, nous parlerons de l’intelligence artificielle qui n’est pas flagrante, mais qui rend, inconsciemment pour le joueur, l'expérience de jeu plus réaliste et immersive. Cette intelligence artificielle est principalement importante dans les jeux à un seul joueur, dans lesquels l’immersion est bien plus importante que dans les jeux multi-joueurs, dans lesquels il est dur de maintenir le joueur dans un univers fictif à cause de la présence d’autres joueurs dont le comportement est difficilement contrôlable et peut être perturbateur.
+Dans cette partie, nous parlerons de l’intelligence artificielle qui n’est pas flagrante, mais qui rend, inconsciemment pour le joueur, l'expérience de jeu plus réaliste et immersive. Cette intelligence artificielle est bien plus importante dans les jeux à un seul joueur que dans les jeux multi-joueurs, dans lesquels il est dur de maintenir le joueur dans un univers fictif à cause de la présence d’autres joueurs dont le comportement est difficilement contrôlable et peut être perturbateur.
 
 \begin{figure}[!h]%
 	\begin{center} 
@@ -457,7 +503,7 @@ Dans cette partie, nous parlerons de l’intelligence artificielle qui n’est p
 
 \newpage
 
-\subsection{Suspension consentie de l'incrédulité, solipsisme et vallée dérangeante}
+\subsection{Suspension consentie de l'incrédulité}
 
 \begin{wrapfigure}{r}{0.4\textwidth}
 	\begin{center}
@@ -466,9 +512,9 @@ Dans cette partie, nous parlerons de l’intelligence artificielle qui n’est p
 	\caption{Why RPG NPCs Always Repeat Themselves, de Dorkly}
 \end{wrapfigure}
 
-Lorsqu’un PNJ répète sans cesse le même dialogue au joueur, celui-ci est ramené à la réalité. Quand un PNJ rencontre un problème de recherche de chemin (lorsqu’un PNJ fonce obstinément dans un mur) ou n’arrive pas à se déplacer d’un point à un autre, le joueur est ramené brutalement à la réalité. 
+Lorsqu’un PNJ répète sans cesse le même dialogue, le joueur est ramené à la réalité. Quand un PNJ rencontre un problème de recherche de chemin et fonce obstinément dans un mur ou n’arrive pas à se déplacer d’un point à un autre, le joueur est ramené, brutalement, à la réalité. 
 
-Toutes ces actions, souvent sans le vouloir, cassent le quatrième mur, et mettent fin à ce que l’on appelle la Suspension Consentie de l’Incrédulité (aussi connue sous le nom de Suspension of disbelief en anglais). Il s’agit d’une sorte de contrat que le joueur signe avec l’œuvre de fiction (que ce soit un jeu, un film, un livre), dans lequel le joueur accepte de mettre de côté son scepticisme le temps de la consultation de l’œuvre en question. 
+Ces actions, souvent sans le vouloir, cassent le quatrième mur, et mettent fin à ce que l’on appelle la Suspension Consentie de l’Incrédulité (aussi connue sous le nom de Suspension of disbelief en anglais). Il s’agit d’une sorte de contrat que le joueur signe avec l’œuvre de fiction (que ce soit un jeu, un film, un livre), dans lequel le joueur accepte de mettre de côté son scepticisme le temps de la consultation de l’œuvre en question. 
 
 \begin{figure}[!h]%
 	\begin{center} 
@@ -479,6 +525,13 @@ Toutes ces actions, souvent sans le vouloir, cassent le quatrième mur, et mette
 
 Il peut ainsi s’immerger dans un univers avec des éléments imaginaires, pour peu que ceux-ci restent crédibles, et que les règles qui régissent l’œuvre restent constantes.
 Lorsque ce contrat est rompu (par définition, il ne peut être rompu que par l’œuvre de fiction), il est difficile de faire replonger un joueur dans l’univers du jeu, avec lequel il restera toujours un peu distant, et cela renforce le solipsisme du joueur.
+
+\begin{figure}[!h]%
+	\begin{center} 
+		\includegraphics[width=0.40\columnwidth]{images/repeat3.png}%
+		\caption{Why RPG NPCs Always Repeat Themselves, de Dorkly}%
+	\end{center}
+\end{figure}
 
 \newpage
 \subsubsection{Solipsisme}
@@ -499,13 +552,13 @@ Evoluer dans un monde photoréaliste et crédible est un bon moyen de garder le 
 Ainsi, de de plus en plus de développeurs de MMORPG (Jeu de Rôle Massivement Multijoueur) décident de donner plus de profondeur aux PNJ (amicaux comme ennemis).
 
 \newpage
-C’est le cas notamment dans EverQuest Next, dans lequel chaque PNJ se voit attribuer certains traits de caractère, ce qui affecte la façon dont il interagit avec les joueurs, ainsi qu’avec les autres PNJ. 
+C’est le cas notamment dans EverQuest Next (en cours de développement), dans lequel chaque PNJ se voit attribuer certains traits de caractère, ce qui affecte la façon dont il interagit avec les joueurs, ainsi qu’avec les autres PNJ. 
 
 De plus, toujours dans EverQuest Next, les monstres ne sont pas regroupés en « camps de monstres », dans lesquels ils ne font qu’attendre, immobiles et apathiques, qu’un joueur vienne les sortir de leur léthargie, comme c’est le cas dans beaucoup de MMORPG actuels. 
 
-Par exemple, un monstre pourra former un groupe avec d’autres monstres et tendre des embuscades sur une route, et soit se faire chasser par des joueurs, soit partir vers d’autres horizons s’ils jugent que cette zone n’est pas assez fructueuse.
+A la place, un monstre pourra former un groupe avec d’autres monstres et tendre des embuscades sur une route, et ils pourront décider de  partir vers d’autres horizons s’ils jugent que cette zone n’est pas assez fructueuse, ou se faire chasser par des joueurs s'ils restent au même endroit trop longtemps.
 
-Toutefois, si le réalisme du comportement des PNJ dépasse un certain point, mais n’arrive pas à la hauteur des attentes du joueur, celui-ci peut être confronté à la vallée dérangeante (plus connue sous son nom anglais d’Uncanny Valley).
+Toutefois, si le réalisme des PNJ androïdes n’arrive pas à la hauteur des attentes du joueur, celui-ci peut être confronté à ce que l'on appelle la vallée dérangeante (plus connue sous son nom anglais d’uncanny valley).
 
 \begin{figure}[!h]%
 	\begin{center} 
@@ -535,7 +588,7 @@ Dans les jeux vidéo, c’est le plus souvent dû au physique (proportions du co
 %	\end{center}
 %\end{figure}
 
-Toutefois, leur comportement joue également un rôle très important. Le personnage de Natalya, personnage secondaire de GoldenEye 007 (Nintendo 64, 1997) notamment, est devenu célèbre pour ses piètres capacités intellectuelles. En effet, plusieurs missions le long du jeu requièrent de l’escorter d’un endroit à un autre en la gardant en vie. Hors, en présence d’ennemis, Natalya n’hésitera pas à se jeter fièrement dans la bataille, bien qu’elle ne puisse ni attaquer ni se défendre, ce qui dans la plupart des cas la mènera à sa mort, et donc à l’échec de la mission.
+Toutefois, leur comportement joue également un rôle très important. Le personnage de Natalya, personnage secondaire de GoldenEye 007 (1997) notamment, est devenu célèbre pour ses piètres capacités intellectuelles. En effet, plusieurs missions le long du jeu requièrent de l’escorter d’un endroit à un autre en la gardant en vie. Hors, en présence d’ennemis, Natalya n’hésitera pas à se jeter fièrement dans la bataille, bien qu’elle ne puisse ni attaquer ni se défendre, ce qui dans la plupart des cas la mènera à sa mort, et donc à l’échec de la mission.
 
 \newpage
 Ainsi, lorsque ce n’est pas un être androïde qu’il voit agir de façon si incohérente, le joueur peut imaginer des causes, ou même ne pas vraiment comprendre mais se dire qu’il lui manque les clés pour comprendre le comportement du PNJ si le joueur ne peut pas s’identifier à lui. 
@@ -559,7 +612,7 @@ Si dans les jeux, cet aspect peut presque passer inaperçu et n'est pas très pr
 \newpage
 \subsubsection{Fable, un monde plus vivant qu'il n'y paraît}
 
-Fable est un jeu sorti en 2004, et innovant pour son époque, de par la liberté qu’il laisse au joueur. En effet, le joueur peut se marier, divorcer, boire, jouer aux cartes, acheter, louer et revendre une ou plusieurs maisons, se tourner vers les forces obscures ou le bien, massacrer des innocents, gardes ou bandits, entre autres activités diverses et variées.
+Fable est un jeu sorti en 2004, et innovant pour son époque, de par la liberté qu’il laisse au joueur. En effet, le joueur peut se marier, divorcer, boire, jouer aux cartes, acheter, louer et revendre des maisons, se tourner vers les forces obscures ou le bien, massacrer des innocents, gardes ou bandits, entre autres activités diverses et variées.
 
 Ce qui suit est une anecdote tirée du blog d’un des développeurs du jeu, traduite, adaptée et commentée.
 
@@ -572,7 +625,7 @@ Ce qui suit est une anecdote tirée du blog d’un des développeurs du jeu, tra
 	
 \textbf{Un monde simulé}
 
-Pour rendre le monde plus intéressant, les développeurs ont donné à chaque PNJ leurs propres traits de caractères, comme dans EverQuest Next.
+Pour rendre le monde plus intéressant, les développeurs ont donné à chaque PNJ leurs propres traits de caractères.
 
 %\begin{wrapfigure}{r}{0.4\textwidth}
 %	\begin{center}
@@ -601,7 +654,7 @@ Plutôt que d’afficher plein de caractéristiques comme dans un RPG classique,
 
 %Quand on mélange les deux, voici ce que cela peut donner :
 
-Imaginez-vous la scène, une radieuse journée à Bowerstone (une ville du jeu). Les papillons papillonnent, le parfum des tulipes vous est porté par une brise. Au loin, on entend des enfants jouant et rigolant dans une cour de récréation, réticent à retourner en classe, malgré le son de cloche qui signifie la fin de la récréation.
+Imaginez-vous la scène, une radieuse journée à Bowerstone (une ville du jeu). Les papillons papillonnent, le parfum des tulipes vous est porté par une brise. Au loin, on entend des enfants jouant et rigolant dans une cour de récréation, réticent à retourner en classe, malgré le son de cloche qui signifie la fin de la pause.
 
 Le cours a repris, après quelques remontrances de l’institutrice. Un des enfants, trouvant le cours assommant, regarde par la fenêtre en soupirant.
 
@@ -620,7 +673,7 @@ Un par un, les enfants se mettent à fixer quelque chose derrière l’institutr
 
 On pourrait ici presque parler de « comportement émergent » (en parallèle au gameplay émergent, dans lequel les joueurs trouvent de nouvelles façons de jouer que les développeurs n’avaient pas prévu) car en partant de règles simples, on arrive à une situation complexe et crédible.
 
-C’est un bon exemple d’apophénie (fait de donner un sens particulier à des évènements banals), car le joueur interprète les réactions des PNJ différemment de ce que les développeurs avaient probablement en tête lors de la réalisation du jeu. 
+C’est également un bon exemple d’apophénie (fait de donner un sens particulier à des évènements banals), puisque le joueur interprète les réactions des PNJ différemment de ce que les développeurs avaient probablement en tête lors de la réalisation du jeu. 
 
 \newpage
 \subsubsection{De ELIZA à Evie}
