@@ -226,25 +226,145 @@ Il existe plusieurs stratégies d’apprentissage pour un réseau de neurones ar
 	Cette capacité qu’a le réseau de neurones à apprendre, à faire des ajustements sur sa propre structure à travers le temps, est ce qui le rend si utile dans le domaine de l’intelligence artificielle.
 \end{itemize}
 
-Avantages
+Afin de mieux comprendre comment fonctionne un réseau de neurones artificiel, regardons plus en détail le fonctionnement interne d’un réseau de neurones, appelé le perceptron. Il a été inventé en 1957 par Frank Rosenblatt au laboratoire aéronautique de l’université Cornell. Il s’agit du plus simple réseau de neurones possible car son modèle de calcul se base sur un seul neurone.
 
-Inconvénients
+Un perceptron est composé de plusieurs points d’entrée, d’un processeur et d’un seul point de sortie.
+
+\begin{figure}[!h]%
+	\begin{center} 
+		\includegraphics[width=0.60\columnwidth]{images/perceptron.jpg}%
+		\caption{Le perceptron}%
+	\end{center}
+\end{figure}
+
+Un perceptron suit le modèle « feed-forward », ce qui signifie qu’il n’existe aucun cycle au sein du réseau de neurones. Autrement dit les entrées sont envoyés au cœur du neurone qui lui-même transmet ses données à la sortie, comment montré sur le schéma ci-dessus (Figure 4).
+
+Chaque entrée est envoyée au processeur suivant le poids de la liaison qui lui est attribué. Le perceptron calcule ensuite la somme des valeurs qu’il a reçu et à l’aide de sa fonction d’activation choisit quel type de réponse il doit envoyer à l’unité de sortie.
+
+Un perceptron peut bien avoir plusieurs points d’entrée, cependant il reste un neurone seul. Le pouvoir du réseau de neurones réside dans l’interconnexion elle-même. Les perceptrons sont, tristement, plutôt limité dans leur capacités. En lisant un livre sur l’intelligence artificielle on peut y apprendre qu’un perceptron peut seulement résoudre des problèmes dissociables linéairement. Un des exemples les plus simples d’un problème dissociable non-linéairement est le XOR, ou encore « ou exclusif ». Tandis que les opérateurs logiques AND et OR sont des problèmes séparables linéairement, il en est autrement du XOR.
+
+\begin{figure}[!h]%
+	\begin{center} 
+		\includegraphics[width=0.60\columnwidth]{images/andor.jpg}%
+		\caption{Tables de vérité AND et OR}%
+	\end{center}
+\end{figure}
+
+Ici il est possible de tirer une ligne afin de séparer les réponses possibles du perceptron.
+
+Le XOR est l’équivalent du OR et du NOT AND. En d’autres termes A XOR B vaut vrai seulement si un seul des deux vaut vrai.
+
+\begin{figure}[!h]%
+	\begin{center} 
+		\includegraphics[width=0.60\columnwidth]{images/xor.jpg}%
+		\caption{Tables de vérité XOR}%
+	\end{center}
+\end{figure}
+
+Le problème représenté ci-dessus n’est pas séparable linéairement. En effet, il est impossible de séparer les deux types de sorties par une simple ligne droite.
+
+Nous venons de voir qu’il était impossible pour un perceptron de résoudre le problème du XOR. Mais il n’est pas impossible pour un réseau de deux perceptrons de résoudre le XOR. Si un perceptron résout le OR et qu’un autre se charge du NOT AND alors les deux perceptrons combinés peuvent venir à bout du XOR.
+
+\begin{figure}[!h]%
+	\begin{center} 
+		\includegraphics[width=0.60\columnwidth]{images/perceptronmulticouche.jpg}%
+		\caption{Un perceptron multicouche}%
+	\end{center}
+\end{figure}
+
+Entraîner ce genre de perceptrons (Figure 7) est beaucoup plus compliqué. Avec un simple perceptron, il était facile d’évaluer la manière de changer les poids suivant l’erreur obtenue. Mais ici, il y a tellement de connexions différentes entre les neurones qu’il en devient difficile de déterminer l’influence qu’on les neurones entre eux.
+
+Cependant il existe une solution pour optimiser les poids d’un réseau de neurones multicouches qui est connue sous le nom de rétropropagation du gradient (ou backpropagation en anglais). La sortie du réseau est générée de la même manière qu’un perceptron. La différence ici est que les données passent par une couche supplémentaire de neurones avant d’atteindre la sortie. Entraîner le réseau (c’est-à-dire ajuster les poids) implique aussi de prendre en compte l’erreur (la différence entre le résultat désiré et la supposition). L’erreur, néanmoins doit être retransmise à travers tout le réseau. La dernière erreur ajuste en fin de compte le poids de toutes les connexions.
 
 \newpage
 \subsubsection{Les arbres de décision avec l’apprentissage par renforcement}
 
-Avantages
-
-Inconvénients
-
 \newpage
 \subsection{Dynamic Game Difficulty Balancing, l’IA qui s’adapte au niveau du joueur}
 
-Beaucoup d’exemples assez simple (on augmente automatiquement le niveau/nombre des ennemis, etc si on trouve que le joueur s’en sort bien, et inversement) 
+Dans beaucoup de jeux d’aujourd’hui, afin de toucher un public plus large, allant du casual gamer au hardcore gamer, la possibilité est donnée au joueur de choisir une difficulté au début du jeu. Toutefois, si la courbe de difficulté augmente trop vite pour le joueur, il peut éprouver de la frustration et rester bloqué, alors que si la difficulté augmente trop lentement, le joueur peut s’ennuyer face à un jeu trop facile.
 
-Les fameux items de Mario Kart (plus t’es loin, meilleurs sont tes objets)
+Même s’il est possible dans certains jeux de modifier la difficulté en cours de jeu, peu de joueurs l’utilisent, par fierté, et finissent soit par se débloquer, soit par abandonner devant un jeu qu’ils trouvent injuste.
 
-Le meilleur exemple pour ce type d’IA se trouve du côté de Valve, et plus précisément dans leur FPS de survival horror, Left 4 Dead. Dans celui-ci, là on explique brièvement le jeu, on sait jamais. Et, contrairement à beaucoup de jeux dans lesquels la difficulté augmente de façon constante, ici un “AI Director” analyse constamment les performances individuelles et collectives des joueurs pour construire une expérience adaptée à tous.
+C’est pour résoudre ce problème que des jeux utilisent le Dynamic Game Difficulty Balancing. C’est une technique qui permet de changer dynamiquement certains éléments (comportement de PNJ, paramètres, etc) au cours du jeu, pour mieux s’adapter au niveau de compétence du joueur, ou même (plus rarement) à son style de jeu. Son but est donc de moduler la difficulté, afin que le jeu représente un challenge intéressant du début à la fin et garder le joueur dans ce que l'on appelle le flow.
+
+\begin{figure}[!h]%
+	\begin{center} 
+		\includegraphics[width=0.60\columnwidth]{images/flow.png}%
+		\caption{Flow}%
+	\end{center}
+\end{figure}
+
+S’il existe presque autant d’approches différentes à cette technique que de jeux qui l’utilisent, il faut néanmoins dans tous les cas régulièrement déterminer et analyser les performances du joueur au moyen d’une fonction heuristique, qui fournit rapidement un résultat concret, même si pas optimal. Dans un jeu, les performances sont critiques, donc c’est bien. 
+
+De plus, des études ont montré qu’une fonction heuristique déterminée à l’aide d’un réseau de neurones artificiels (ANN) donne de meilleurs résultats qu’une fonction heuristique faite par des humains.
+Il est ainsi possible, afin de moduler le comportement des PNJ, de pondérer la probabilité de ses actions en fonction des performances du joueur.
+
+Par exemple, dans un jeu de tir à la première personne (FPS), le jeu pourra prendre en compte :
+
+\begin{itemize}
+	\item Le nombre de points de vie actuel du joueur
+	\item Le nombre de munitions actuel du joueur
+	\item La précision du joueur (pourcentage de tirs qui touchent une cible)
+	\item Durée de vie moyenne d’un ennemi
+	\item etc ...
+\end{itemize}
+
+Et à partir de ces informations, si le jeu trouve que le joueur s’en sort bien, il pourra décider de :
+
+\begin{itemize}
+	\item Faire apparaître plus d’ennemis
+	\item Rendre les ennemis plus résistants et/ou intelligents
+	\item Faire apparaître moins de caisses de munitions et/ou kits de santé
+	\item etc ...
+\end{itemize}
+
+A l’inverse, s’il remarque que le joueur éprouve des difficultés, il pourra :
+
+\begin{itemize}
+	\item Diminuer le nombre maximum d’ennemis présents en même temps
+	\item Rendre les ennemis moins résistants et/ou moins intelligents
+	\item Faire apparaître plus de caisses de munitions et/ou kits de santé
+	\item etc ...
+\end{itemize}
+
+Toutefois, cette méthode a tout de même quelques inconvénients. Si ce n’est pas assez transparent, le joueur pourra en tirer parti, par exemple en faisant exprès de mal jouer avant une rencontre avec un boss pour le rendre plus simple. 
+
+Malheureusement, à cause des nombreuses problématiques de game design que cela soulève, le nombre de jeux qui utilisent cette technique est assez restreint.
+
+\newpage
+\subsubsection{Mario Kart}
+
+Mario Kart est un jeu de course dans lequel le joueur peut obtenir des capacités pour l’aider en passant sur des gros cubes. Ces cubes donnent une capacité aléatoire, mais dépendant de la position du joueur dans la course. Ainsi, si le joueur est bien placé, il aura des chances augmentées de recevoir des capacités considérées “faibles” comme une banane ou une carapace verte, tandis que si le joueur se retrouve à la fin du classement, ce sont ses chances de recevoir des capacités considérées “fortes” qui augmentent (exemple)
+
+Les PNJ ont également droit à ces probabilités modifiées, mais ont en plus un comportement qui s’adapte en fonction de leur classement. En effet, un PNJ en tête de classement verra sa vitesse maximum  réduite et sera moins agressif, tandis qu’un PNJ en bas du classement aura une vitesse maximum augmentée et deviendra plus agressif.
+
+Malheureusement cette dernière technique provoque un effet nommé “rubber band effect”  (effet élastique), car le joueur peut avoir l’impression que tous les autres PNJ sont liés à lui par un élastique, puisqu’ils ne peuvent pas prendre trop d’avance ou trop de retard par rapport à lui.
+
+%https://www.reddit.com/r/n64/comments/2rp1zg/how_are_mario_kart_64_items_distributed/
+%https://docs.google.com/spreadsheets/d/1rQjYBQdrK8RI6801io_7D0tShweqjDMWyuwCn46oMyE/edit#gid=0
+%http://www.hindawi.com/journals/ijcgt/2012/625476/
+
+\newpage
+\subsubsection{Resident Evil 5}
+
+Dans Resident Evil 5, il est possible de sélectionner une difficulté de départ, mais celle-ci n’est pas fixe. Pendant le jeu, un système appelé “Difficulty Scale” analyse et note la performance du joueur sur une échelle de 1 à 10 et adapte la difficulté du jeu en modifiant certains paramètres comme :
+
+\begin{itemize}
+	\item La résistance et les dommages des ennemis
+	\item Le comportement des ennemis
+\end{itemize}
+
+Ici, la difficulté choisie au départ sert de bornes pour la difficulté dynamique. Ainsi, si le joueur choisit la difficulté minimale, même s’il se débrouille très bien par la suite, la difficulté dynamique ne pourra pas dépasser un certain niveau. Et inversement si le joueur choisit une difficulté initiale élevée, et que par la suite ne fait que mourir, la difficulté ne pourra pas baisser en dessous d’un certain niveau.
+
+trouver une image
+
+\newpage
+\subsubsection{Left 4 Dead}
+
+Le meilleur exemple actuel (connu) pour ce type d’IA se trouve du côté de Valve, et plus précisément dans leur FPS de survival horror, Left 4 Dead, sorti en 2008. Dans celui ci, un groupe de 4 joueurs (dont certains peuvent être des PNJ) doit se frayer un chemin dans un niveau infesté de zombies en tout genre.
+
+“AI Director” (que nous appellerons par la suite “réalisateur”) est le nom de cette intelligence artificielle qui analyse constamment les performances des joueurs afin de proposer une expérience plus intéressantes. Mais il ne se contente pas d’analyser les performances individuelles, il analyse également la performance collective.
 
 \begin{figure}[!h]%
 	\begin{center} 
@@ -253,6 +373,21 @@ Le meilleur exemple pour ce type d’IA se trouve du côté de Valve, et plus pr
 	\end{center}
 \end{figure}
 
+L’”AI Director” suit un cycle tout au long de la partie. Dés que les joueurs sortent de la zone de départ, l’étape de “Build Up” commence. Pendant cette étape, un nombre relativement constant de zombies attaque les joueurs. Lorsque le niveau d’intensité du groupe (pression calculée pour chaque joueur, augmente plus les zombies sont proches) atteint un certain seuil, l’étape de “Peak” prend le relais, et plus aucun zombie ne spawn. Après avoir tué la majorité des zombies, c’est finalement le tour de l’étape de “Relax”, qui dure environ 30 secondes, pendant laquelle les joueurs peuvent se soigner et récupérer, après quoi le processus recommence, et ce jusqu’à la fin du niveau.
+
+La fonction principale du réalisateur est de s’occuper de l’apparition et du placement des ennemis. Il y a deux catégories d’ennemis, les ennemis communs et les boss. Le réalisateur a deux types de placement, il peut placer des ennemis devant les joueurs, qui errent sans but et attaquent les joueurs à vue, ou les placer sur les côtés et derrière les joueurs, et ceux-ci foncent directement vers les joueurs, même s’ils ne sont pas en vue.
+
+Pour ce qui est des boss (Tank et Witch), ils attaquent à vue également, mais le réalisateur ne peut les faire apparaître qu’à certains endroits spécifiques de la carte, le long du chemin principal. En revanche, si les joueurs essayent de les éviter en passant par un chemin parallèle, le réalisateur s’en rendra compte et rendra le boss agressif, qui ira attaquer les joueurs.
+
+De plus, il ne se contente pas de modifier les éléments du gameplay, c’est également lui qui gère les répliques lancées par les personnages, modifie dynamiquement la musique pour s’adapter au moment, ainsi que la position des objets récupérables par les joueurs. Il est aussi responsable de certains effets sonores et visuels, qu’il peut décider d’ajouter pour amplifier la tension.
+
+Dans Left 4 Dead 2, il est même capable de modifier dynamiquement l’agencement du niveau et donc de modifier le chemin que les joueurs doivent suivre.
+
+Malheureusement, comme c’est le cas pour Resident Evil 5, ce réalisateur et son fonctionnement étant connu par les joueurs, ceux-ci n’hésitent pas à en tirer profit pour rendre certaines parties du jeu plus simple en faisant exprès de mal jouer pour réduire la difficulté à certains moments critiques du jeu.
+
+\newpage
+\subsection{Cheating / Procedural / Data mining}
+
 \newpage
 \subsection{Des jeux par les IA, pour les IA}
 
@@ -260,11 +395,35 @@ Bientôt, il n’y aura plus du tout besoin d’humains dans la boucle de créat
 
 En effet, la prochaine IA dont nous allons parler est une IA capable d’apprendre à joueur à des jeux, tandis que la suivante, très jeune, est capable de développer des jeux (simples) complets.
 
+\begin{figure}[!h]%
+	\begin{center} 
+		\includegraphics[width=0.60\columnwidth]{images/robotplaying.jpg}%
+		\caption{Le joueur du futur}%
+	\end{center}
+\end{figure}
+
+\begin{figure}[!h]%
+	\begin{center} 
+		\includegraphics[width=0.60\columnwidth]{images/robotdeveloping.jpg}%
+		\caption{Robot développant un jeu (fiction)}%
+	\end{center}
+\end{figure}
+
+\newpage
 \subsubsection{General Game Playing, l'IA qui apprend à jouer}
 
-C’est un domaine qui a gagné en popularité ces dernières années, notamment grâce à une IA qui a gagné le prix du public de la compétition annuelle organisée par l’AAAI (Association for the Advancement of Articifial Intelligence).
+Si les IA capables de jouer à des jeux de société existent depuis longtemps, celles-ci étaient limitées et ne pouvaient jouer qu’à un seul jeu. Ce n’est pas le cas des IA suivant la technique de General Game Playing (GGP), et son homologue pour les jeux vidéo, la technique de General Video Game Playing (GVGP).
 
-Cette IA est capable d’apprendre à jouer à un niveau de Mario Bros (un jeu de plateforme 2D) et de s’adapter aux différents niveaux qui le composent.
+C’est un domaine qui a gagné en popularité ces dernières années, notamment grâce à une IA doté d’uns système de GVGP qui a gagné le prix du public de la compétition annuelle de GGP organisée par l’AAAI (Association for the Advancement of Articifial Intelligence).
+
+Cette IA est notamment capable d’apprendre à jouer à un niveau de Mario Bros (SNES ?, XXXX ?), un jeu de plateforme 2D, de s’adapter aux différents obstacles qui le composent, et même d’apprendre certaines mécaniques (sauter sur un Koopa pour le tuer).
+
+GROS BLABLA
+PHOTO
+
+%https://en.wikipedia.org/wiki/General_video_game_playing
+%https://en.wikipedia.org/wiki/Artificial_intelligence_(video_games)#In_modern_video_games
+%https://www.youtube.com/watch?v=AplG6KnOr2Q
 
 \newpage
 \subsubsection{Angelina, l’IA qui développe des jeux}
@@ -302,7 +461,7 @@ Dans cette partie, nous parlerons de l’intelligence artificielle qui n’est p
 
 \begin{wrapfigure}{r}{0.4\textwidth}
 	\begin{center}
-		\includegraphics[width=0.38\textwidth]{images/repeat1.png}
+		\includegraphics[width=0.40\textwidth]{images/repeat1.png}
 	\end{center}
 	\caption{Why RPG NPCs Always Repeat Themselves, de Dorkly}
 \end{wrapfigure}
@@ -313,7 +472,7 @@ Toutes ces actions, souvent sans le vouloir, cassent le quatrième mur, et mette
 
 \begin{figure}[!h]%
 	\begin{center} 
-		\includegraphics[width=0.42\columnwidth]{images/repeat2.png}%
+		\includegraphics[width=0.40\columnwidth]{images/repeat2.png}%
 		\caption{Why RPG NPCs Always Repeat Themselves, de Dorkly}%
 	\end{center}
 \end{figure}
@@ -330,7 +489,7 @@ Mais c'est dans les jeux vidéo (principalement ceux à un seul joueur) qu'elle 
 
 \begin{figure}[!h]%
 	\begin{center} 
-		\includegraphics[width=0.60\columnwidth]{images/repeat3.png}%
+		\includegraphics[width=0.40\columnwidth]{images/repeat3.jpg}%
 		\caption{Why RPG NPCs Always Repeat Themselves, de Dorkly}%
 	\end{center}
 \end{figure}
@@ -339,6 +498,7 @@ Evoluer dans un monde photoréaliste et crédible est un bon moyen de garder le 
 
 Ainsi, de de plus en plus de développeurs de MMORPG (Jeu de Rôle Massivement Multijoueur) décident de donner plus de profondeur aux PNJ (amicaux comme ennemis).
 
+\newpage
 C’est le cas notamment dans EverQuest Next, dans lequel chaque PNJ se voit attribuer certains traits de caractère, ce qui affecte la façon dont il interagit avec les joueurs, ainsi qu’avec les autres PNJ. 
 
 De plus, toujours dans EverQuest Next, les monstres ne sont pas regroupés en « camps de monstres », dans lesquels ils ne font qu’attendre, immobiles et apathiques, qu’un joueur vienne les sortir de leur léthargie, comme c’est le cas dans beaucoup de MMORPG actuels. 
@@ -357,25 +517,30 @@ Toutefois, si le réalisme du comportement des PNJ dépasse un certain point, ma
 \newpage
 \subsubsection{Vallée dérangeante}
 
-La vallée dérangeante est une théorie selon laquelle plus une créature à forme humaine ressemble à un être humain, plus on remarque ses imperfections, même minimes, et plus elles nous dérangent. Cette théorie a été publié en 1970 par le roboticien Japonais Masahiro Mori, dans le cadre de ses recherches sur les réponses émotionnelles des robots.
+La vallée dérangeante est une théorie selon laquelle plus une créature androïde ressemble à un être humain, plus on remarque ses imperfections, même minimes, et plus elles nous dérangent. Cette théorie a été publiée en 1970 par le roboticien japonais Masahiro Mori, dans le cadre de ses recherches sur les réponses émotionnelles des robots.
 
 \begin{figure}[!h]%
 	\begin{center} 
 		\includegraphics[width=0.60\columnwidth]{images/uncannyValley.png}%
-		\caption{Réaction émotionnelle supposée de sujets humains à l'anthropomorphisme (Wikipédia) }%
+		\caption{Vallée dérangeante}%
 	\end{center}
 \end{figure}
 
-Dans les jeux vidéo, c’est le plus souvent dû au physique (proportions du corps) et à l’animation (principalement du visage) des personnages humanoïdes, qui se rapprochent de plus en plus de la perfection, et qui donc, à la moindre imperfection, nous paraissent monstrueux.
+Dans les jeux vidéo, c’est le plus souvent dû au physique (proportions du corps) et à l’animation (principalement du visage) des PNJ androïdes, qui se rapprochent de plus en plus de la perfection, mais dont la moindre imperfection nous paraît grotesque.
 
-\begin{figure}[!h]%
-	\begin{center} 
-		\includegraphics[width=0.60\columnwidth]{images/shepard.jpg}%
-		\caption{Commandant Shepard et son sourire dérangeant, Mass Effect 3, BioWare}%
-	\end{center}
-\end{figure}
+%\begin{figure}[!h]%
+%	\begin{center} 
+%		\includegraphics[width=0.60\columnwidth]{images/shepard.jpg}%
+%		\caption{Commandant Shepard et son sourire dérangeant, Mass Effect 3, BioWare}%
+%	\end{center}
+%\end{figure}
 
-Toutefois, le comportement des PNJ joue également un rôle très important. Le personnage de Natalya, personnage secondaire de GoldenEye 007 (Nintendo 64, 1997) notamment, est devenu célèbre pour ses piètres capacités intellectuelles. En effet, plusieurs missions le long du jeu requièrent de l’escorter d’un endroit à un autre en la gardant en vie. Hors, en présence d’ennemis, Natalya n’hésitera pas à se jeter fièrement dans la bataille, bien qu’elle ne puisse ni attaquer ni se défendre, ce qui dans la plupart des cas la mènera à sa mort, et donc à l’échec de la mission.
+Toutefois, leur comportement joue également un rôle très important. Le personnage de Natalya, personnage secondaire de GoldenEye 007 (Nintendo 64, 1997) notamment, est devenu célèbre pour ses piètres capacités intellectuelles. En effet, plusieurs missions le long du jeu requièrent de l’escorter d’un endroit à un autre en la gardant en vie. Hors, en présence d’ennemis, Natalya n’hésitera pas à se jeter fièrement dans la bataille, bien qu’elle ne puisse ni attaquer ni se défendre, ce qui dans la plupart des cas la mènera à sa mort, et donc à l’échec de la mission.
+
+\newpage
+Ainsi, lorsque ce n’est pas un être androïde qu’il voit agir de façon si incohérente, le joueur peut imaginer des causes, ou même ne pas vraiment comprendre mais se dire qu’il lui manque les clés pour comprendre le comportement du PNJ si le joueur ne peut pas s’identifier à lui. 
+
+Mais lorsqu’un humain voit un autre être qui lui ressemble, il ne peut s’empêcher d’essayer de se mettre à sa et de le comprendre. Ainsi, pour un joueur, être témoin d’un comportement étrange et inexplicable d’un PNJ androïde est une expérience parfois drôle, mais souvent désagréable, et qui nuit toujours à l’immersion.
 
 \begin{figure}[!h]%
 	\begin{center} 
@@ -384,58 +549,63 @@ Toutefois, le comportement des PNJ joue également un rôle très important. Le 
 	\end{center}
 \end{figure}
 
-Lorsque ce n’est pas un être humanoïde qu’il voit agir de façon si incohérente, le joueur peut imaginer des causes, ou même ne pas vraiment comprendre mais se dire qu’il lui manque les clés pour comprendre le comportement du PNJ si le joueur ne peut pas s’identifier à lui. 
-
-Mais lorsqu’un humain voit un autre être qui lui ressemble, il ne peut s’empêcher d’essayer de se mettre à la place de l’autre et de le comprendre. Ainsi, pour un joueur, être témoin d’un comportement étrange et inexplicable d’un PNJ a forme humanoïde est une expérience parfois drôle, mais souvent désagréable, et qui nuit toujours à l’immersion.
-
 \newpage
 \subsection{Entre la sérendipité et l'apophénie}
 
-De par son côté de plus en plus évolutif et complexe, il est parfois difficile de prévoir tous les résultats possibles d’une interaction du joueur avec l’IA, ce qui donne parfois lieu à une sorte de gameplay émergent, avec des PNJ au comportement imprévisible, même pour les créateurs.
+De par son côté évolutif et de plus en plus complexe, il est parfois difficile de prévoir tous les résultats possibles d’une interaction enter le joueur et l’IA, ce qui donne parfois lieu à ce que l'on pourrait appeler des expériences émergentes, avec des PNJ au comportement imprévisible, même pour les créateurs.
 
-Si dans les jeux, cet aspect peut presque passer inaperçu, comme dans Fable et n'est pas très présent, certains programmes reposent essentiellement sur ce principe, comme le chatbot Evie (Evie n'est pas un jeu vidéo au sens classique du terme, mais cela reste un programme ludique avec lequel le joueur peut interagir).
+Si dans les jeux, cet aspect peut presque passer inaperçu et n'est pas très présent, comme dans Fable, il s'agit d'une des principales fonctionnalités de certains programmes, comme le chatbot Evie (Evie n'est pas un jeu vidéo au sens classique du terme, mais cela reste un programme ludique avec lequel le joueur peut interagir).
 
 \newpage
 \subsubsection{Fable, un monde plus vivant qu'il n'y paraît}
 
-Fable est un jeu sorti en 2004, et innovant pour son époque, de par la liberté qu’il laisse au joueur. En effet, le joueur peut se marier, divorcer, boire, jouer aux cartes, acheter, louer et revendre une ou plusieurs maisons, se tourner vers les forces obscures ou le bien, massacrer des innocents, des gardes ou des bandits, entre autres activités diverses et variées.
+Fable est un jeu sorti en 2004, et innovant pour son époque, de par la liberté qu’il laisse au joueur. En effet, le joueur peut se marier, divorcer, boire, jouer aux cartes, acheter, louer et revendre une ou plusieurs maisons, se tourner vers les forces obscures ou le bien, massacrer des innocents, gardes ou bandits, entre autres activités diverses et variées.
 
-Ce qui suit est une anecdote tirée du blog d’un des développeurs, traduite, adaptée et commentée.
-Les développeurs se sont également imposés deux règles qu’ils jugeaient vitales que le jeu suive, sans quoi il ne respecterait pas leur vision :
+Ce qui suit est une anecdote tirée du blog d’un des développeurs du jeu, traduite, adaptée et commentée.
 
-\begin{itemize}
-	\item Le monde dans lequel le joueur évolue, ainsi que tous ses occupants doivent réagir de manière appropriée aux actions du joueur.
-	\item Le personnage principal doit exprimer visuellement ce qu’il ressent.
-\end{itemize}
+%Les développeurs se sont également imposés deux règles qu’ils jugeaient vitales que le jeu suive, sans quoi il ne respecterait pas leur vision :
+%
+%\begin{itemize}
+%	\item Le monde dans lequel le joueur évolue, ainsi que tous ses occupants doivent réagir de manière appropriée aux actions du joueur.
+%	\item Le personnage principal doit exprimer visuellement ce qu’il ressent.
+%\end{itemize}
 	
 \textbf{Un monde simulé}
 
-Pour rendre le monde plus intéressant, les développeurs ont donné à chaque PNJ leurs propres traits de caractères, comme dans EverQuest Next (PC, en développement).
+Pour rendre le monde plus intéressant, les développeurs ont donné à chaque PNJ leurs propres traits de caractères, comme dans EverQuest Next.
 
-\begin{wrapfigure}{r}{0.4\textwidth}
-	\begin{center}
-		\includegraphics[width=0.38\textwidth]{images/chicken.jpg}
-	\end{center}
-	\caption{Enfant tourmentant une poule dans Fable}
-\end{wrapfigure}
+%\begin{wrapfigure}{r}{0.4\textwidth}
+%	\begin{center}
+%		\includegraphics[width=0.38\textwidth]{images/chicken.jpg}
+%	\end{center}
+%	\caption{Enfant tourmentant une poule dans Fable}
+%\end{wrapfigure}
 
-Ils ont également remarqué que les joueurs étaient particulièrement sensibles aux émotions des enfants. Ils ont donc décidé de rendre le comportement des enfants très varié. Ainsi, certains sont de véritables petites pestes (comme certains le sont dans la réalité), et poursuivent et tourmentent les poules, tandis que d’autres vont à l’école bien en rangs, et rentrent gentiment à la maison à l’heure pour le goûter (comme certains le font dans la réalité).
+Ils ont également remarqué que les joueurs étaient particulièrement sensibles aux émotions des enfants. Ils ont donc décidé de rendre le comportement des enfants très varié. Ainsi, certains sont de véritables petites pestes, et s'amusent en tourmentant des poules, tandis que d’autres vont à l’école bien en rangs, et rentrent gentiment à la maison à l’heure pour le goûter.
 
 Et, peut-être le plus important, les enfants fixeront avec intensité ce qu’ils trouvent intriguant.
+
+\begin{figure}[!h]%
+	\begin{center} 
+		\includegraphics[width=0.40\columnwidth]{images/chicken.jpg}%
+		\caption{Enfant tourmentant une poule dans Fable}%
+	\end{center}
+\end{figure}
 
 \textbf{Un héros expressif}
 
 Plutôt que d’afficher plein de caractéristiques comme dans un RPG classique, les développeurs ont trouvé plus intéressant de montrer par des mouvements et des expressions que le personnage réagit au monde qui l’entoure (plutôt que de rester planter là, sans émotions apparentes).
 
+\newpage
 \textbf{Un héros expressif dans un monde simulé}
 
-Quand on mélange les deux, voici ce que cela peut donner :
+%Quand on mélange les deux, voici ce que cela peut donner :
 
-Imaginez-vous la scène, une radieuse journée à Bowerstone (une ville du jeu). Les papillons papillonnent, le parfum des tulipes vous est porté par une brise. Au loin, on entend des enfants jouant et rigolant dans une cour de récréation, réticent à retourner en classe, malgré le son de cloche qui signifie la fin de la pause.
+Imaginez-vous la scène, une radieuse journée à Bowerstone (une ville du jeu). Les papillons papillonnent, le parfum des tulipes vous est porté par une brise. Au loin, on entend des enfants jouant et rigolant dans une cour de récréation, réticent à retourner en classe, malgré le son de cloche qui signifie la fin de la récréation.
 
 Le cours a repris, après quelques remontrances de l’institutrice. Un des enfants, trouvant le cours assommant, regarde par la fenêtre en soupirant.
 
-L’homme s’infiltre silencieusement dans l’école. L’institutrice lui tourne le dos. Elle ne se doute de rien.
+Un homme s’infiltre silencieusement dans l’école. L’institutrice lui tourne le dos. Elle ne se doute de rien.
 
 Un par un, les enfants se mettent à fixer quelque chose derrière l’institutrice. La classe devient silencieuse. Finalement, l’institutrice entend un bruit derrière elle, se retourne et …
 
@@ -455,52 +625,45 @@ C’est un bon exemple d’apophénie (fait de donner un sens particulier à des
 \newpage
 \subsubsection{De ELIZA à Evie}
 
-Un agent conversationnel (ou chatbot en anglais), est un logiciel autonome qui a pour fonction de dialoguer avec l’utilisateur. Pour cela, la phrase entrée par l’utilisateur est traduite en un langage intermédiaire pour permettre à l’agent de l’analyser, qui va ensuite générer une réponse plus ou moins approprié.
+Un agent conversationnel (ou chatbot en anglais), est un logiciel autonome qui a pour fonction de dialoguer avec l’utilisateur. Pour cela, la phrase entrée par l’utilisateur est traduite en un langage intermédiaire pour permettre à l’agent de l’analyser, qui va ensuite générer une réponse plus ou moins appropriée.
 
-ELIZA, créé en 1966, par Joseph Weizenbaum, MIT, fut le premier agent conversationnel développé. Son comportement était très simple et scripté (elle répondait aux questions en demandant pourquoi cette question, si elle détectait le mot « ordinateur », elle demandait si la question lui avait posée parce qu’elle est une machine), et laissait donc peu de place à une vraie conversation.
-
+ELIZA, créé en 1966, par Joseph Weizenbaum, MIT, fut le premier agent conversationnel développé. Son comportement était très simple et fixé à l'avance (elle répondait aux questions en demandant pourquoi cette question, si elle détectait le mot « ordinateur », elle demandait si la question lui avait été posée parce qu’elle même est une machine), et laissait donc peu de place à une vraie conversation.
 
 \begin{figure}[!h]%
 	\begin{center} 
-		\includegraphics[width=0.60\columnwidth]{images/eliza.png}%
+		\includegraphics[width=0.50\columnwidth]{images/eliza.png}%
 		\caption{ELIZA, premier chatbot}%
 	\end{center}
 \end{figure}
 
-En 1997, Rollo Carpenter, un informaticien britannique, crée Jabberwacky. C’est lui aussi un agent conversationnel, mais au lieu d’avoir un comportement scripté, celui-ci est capable d’apprendre. En effet, il stocke dans une base de données toutes les conversations des utilisateurs, et s’en sert pour choisir une réponse à la question posée par l’utilisateur.
+En 1997, Rollo Carpenter, un informaticien britannique, crée Jabberwacky. C’est lui aussi un agent conversationnel, mais au lieu d’avoir un comportement fixé à l'avance, celui-ci est capable d’apprendre. En effet, il stocke dans une base de données toutes les conversations des utilisateurs, et s’en sert pour choisir une réponse à la question posée par l’utilisateur.
 
 Ce n’est que onze ans plus tard, en 2008 que Rollo Carpenter met en ligne Cleverbot, descendant spirituel de Jabberwacky. Celui-ci dispose également d’une base de données des conversations avec les utilisateurs parmi lesquelles il va chercher la réponse la plus appropriée, mais a également une notion de contexte, grâce à un système de mémoire à court terme, qui donne un poids plus important aux conversations récentes.
 
-\newpage
+%\newpage
+%\begin{figure}[!h]%
+%	\begin{center} 
+%		\includegraphics[width=0.60\columnwidth]{images/jabberwacky.jpg}%
+%		\caption{Jabberwacky, en pleine discussion}%
+%	\end{center}
+%\end{figure}
+
+C'est également à ce moment que Existor voit le jour, fondée par Rollo Carpenter, entreprise qui se donne pour objectif de créer des algorithmes pour arriver à un niveau de conversation humaine naturelle.
+
+Ainsi, c’est en 2015 que Evie (\textbf{E}lectronic \textbf{V}irtual \textbf{I}nteractive \textbf{E}ntity), la petite sœur de Cleverbot, voit le jour. Devant la quantité de données que les différents chatbot de Existor récoltent chaque jour (5,5 millions de conversations par jour), et le nombre impressionnant de 1,5 milliards de conversations enregistrées, les développeurs de Existor décident d'utiliser des techniques de Machine Learning pour les analyser. 
+
 \begin{figure}[!h]%
 	\begin{center} 
-		\includegraphics[width=0.60\columnwidth]{images/jabberwacky.jpg}%
-		\caption{Jabberwacky, en pleine discussion}%
-	\end{center}
-\end{figure}
-
-C'est également à ce moment que Existor voit le jour, fondé par Rollo Carpenter, entreprise qui se donne pour objectif de développer des technologies pour arriver à un niveau de conversation humain.
-
-Ainsi, c’est en 2015 que Evie (Electronic Virtual Interactive Entity), la petite sœur de Cleverbot, voit le jour. Devant la quantité de données que les différents chatbot de Existor récoltent chaque jour (5.5 millions de conversations par jour), et le nombre impressionnant de 1.5 milliards de conversations enregistrées, les développeurs de Existor ont commencé à utiliser des techniques de Machine Learning. 
-
-\begin{figure}[!h]%
-	\begin{center} 
-		\includegraphics[width=0.60\columnwidth]{images/evie.png}%
+		\includegraphics[width=0.40\columnwidth]{images/evie.png}%
 		\caption{Evie}%
 	\end{center}
 \end{figure}
 
-Dans un premier temps, ils s’en sont servi pour chercher des motifs récurrents dans les phrases, puis, à l’aide de RNNLMs (Recurrent Neural Network Language Models), ils ont pu estimer les probabilités que tels ou tels mots se suivent, afin de former une phrase plus naturelle.
+Dans un premier temps, ils cherchent  des motifs récurrents dans les phrases, puis, à l’aide de RNNLM (\textbf{R}ecurrent \textbf{N}eural \textbf{N}etwork \textbf{L}anguage \textbf{M}odels), ils arrivent à  estimer les probabilités qu'un mot en suive un autre, afin de former une phrase plus naturelle.
 
-Ainsi, même si les réponses de Evie sont de plus naturelles, le joueur ne sait jamais trop jusqu'où une conversation avec elle peut aller. Comme dans une discussion naturelle, le sujet change au fur et à mesure de la conversation, parfois de manière brusque quand Evie ne comprend pas bien la phrase du joueur, et le joueur peut très vite se retrouver dans une situation dans laquelle Evie l'insulte, ou en train de se battre pour avoir le dernier mot :
+Cette expérience se rapproche alors de la sérendipité, qui à l'origine désigne le fait de réaliser une découverte scientifique inattendue dans le cadre d'une recherche concernant un autre sujet. Toutefois, le sens du terme est aujourd'hui plus large, englobant ainsi la navigation sur internet, qui peut en quelques liens nous emmener dans des endroits complètement inattendus.
 
-\begin{itemize}
-	\item Evie : Oui
-	\item Joueur : Non
-	\item Evie : Oui
-	\item Joueur : Non
-	\item etc ...
-\end{itemize}
+Ainsi, même si les réponses de Evie sont de plus en plus naturelles, le joueur ne sait jamais trop jusqu'où une conversation avec elle peut aller. Comme dans une discussion naturelle, le sujet change au fur et à mesure de la conversation, parfois de manière brusque quand Evie ne comprend pas bien la phrase du joueur, et le joueur peut très vite se retrouver dans une situation dans laquelle Evie l'insulte sans raison, ou en train de se battre pour avoir le dernier mot.
 
 %------------------------------------------------
 
