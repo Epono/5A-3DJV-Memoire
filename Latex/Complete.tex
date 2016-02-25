@@ -154,7 +154,7 @@ A partir des années 1990, l’émergence de nouveaux genres de jeux vidéo a co
 Les premiers jeux rencontraient de nombreux problèmes (Herzog Zwei en 1989 avec une recherche de chemin basée sur un automate fini à trois états, ainsi que Dune 2 en 1992 qui utilisaient de nombreuses « astuces »). 
 
 \newpage
-\subsubsection{Une IA évolutive}
+\subsection{Une IA évolutive}
 
 Longtemps délaissée au profit des graphismes des jeux vidéo, cette branche constitue maintenant une part importante du travail dans un jeu vidéo. Les joueurs réclament de plus en plus des IA au comportement humain afin d'accroître le sentiment d’immersion. Certains jeux sont réputés pour être des précurseurs en matière d’IA, en voici quelques exemples : 
 
@@ -428,11 +428,17 @@ Malheureusement, son existence et son fonctionnement étant connu par les joueur
 %\subsection{Cheating / Procedural / Data mining}
 
 \newpage
-\subsection{Des jeux par les IA, pour les IA}
+\subsection{General Video Game Playing, l'IA qui apprend à jouer}
 
 Bientôt, il n’y aura plus du tout besoin d’humains dans la boucle de création et consommation de jeu.
 
-En effet, la prochaine IA dont nous allons parler est capable d’apprendre à joueur à des jeux, tandis que la suivante, très jeune, est capable de développer des jeux (simples) complets.
+Si les IA capables de jouer à des jeux de société existent depuis longtemps, celles-ci étaient limitées et ne pouvaient jouer qu’à un seul jeu. Ce n’est pas le cas des IA suivant la technique de GGP (\textbf{G}eneral \textbf{G}ame \textbf{P}laying), et son homologue pour les jeux vidéo, la technique de GVGP (\textbf{G}eneral \textbf{V}ideo \textbf{G}ame \textbf{P}laying).
+
+
+Les applications possibles pour ce type d'IA sont multiples\cite{levine_et_al:DFU:2013:4337}.
+
+%Bêta testeur (“combos” opés, détecteurs de zone peu/trop visitées, etc)
+%http://drops.dagstuhl.de/opus/volltexte/2013/4337/pdf/8.pdf
 
 \begin{figure}[!h]%
 	\begin{center} 
@@ -442,11 +448,7 @@ En effet, la prochaine IA dont nous allons parler est capable d’apprendre à j
 \end{figure}
 
 \newpage
-\subsubsection{General Video Game Playing, l'IA qui apprend à jouer}
-
-Si les IA capables de jouer à des jeux de société existent depuis longtemps, celles-ci étaient limitées et ne pouvaient jouer qu’à un seul jeu. Ce n’est pas le cas des IA suivant la technique de GGP (\textbf{G}eneral \textbf{G}ame \textbf{P}laying), et son homologue pour les jeux vidéo, la technique de GVGP (\textbf{G}eneral \textbf{V}ideo \textbf{G}ame \textbf{P}laying).
-
-C’est un domaine qui a gagné en popularité ces dernières années, notamment grâce à une IA dotée d’un système de GVGP qui a gagné le prix du public de la compétition annuelle de GGP organisée par l’AAAI (\textbf{A}ssociation for the \textbf{A}dvancement of \textbf{A}rticifial \textbf{I}ntelligence).
+C’est un domaine qui a gagné en popularité ces dernières années, notamment grâce à une IA dotée d’un système de GVGP qui a gagné le prix du public de la compétition annuelle 2015\cite{mariolives} de GGP organisée par l’AAAI (\textbf{A}ssociation for the \textbf{A}dvancement of \textbf{A}rticifial \textbf{I}ntelligence).
 
 Cette IA est notamment capable d’apprendre à jouer à un niveau de Mario, un jeu de plateforme 2D, de s’adapter aux différents obstacles qui le composent, et même d’apprendre certaines mécaniques (sauter sur un Koopa pour le tuer).
 
@@ -459,13 +461,16 @@ Il est également possible d'interagir avec cette IA et de lui poser des questio
 	\end{center}
 \end{figure}
 
-%https://en.wikipedia.org/wiki/General_video_game_playing
-%https://en.wikipedia.org/wiki/Artificial_intelligence_(video_games)#In_modern_video_games
-%https://www.youtube.com/watch?v=AplG6KnOr2Q
+
 
 \newpage
-\subsubsection{Angelina, l’IA qui développe des jeux}
+\subsection{Des jeux par les IA}
 
+Comme nous l'avons vu dans la partie précédente, l'époque où il n'y avait que les humains qui jouaient aux jeux vidéo est révolue, dorénavant, même les IA apprennent à y jouer.
+
+Mais une autre époque pourrait également bientôt se finir. En effet, depuis quelques années, d'autres projets d'IA ont vu le jour, non pas pour jouer aux jeux vidéo, mais pour les créer. 
+
+Ces programmes ne demandent qu'une description sommaire mais livrent un jeu jouable.
 
 \begin{figure}[!h]%
 	\begin{center} 
@@ -473,6 +478,42 @@ Il est également possible d'interagir avec cette IA et de lui poser des questio
 		\caption{Robot développant un jeu (fiction)}%
 	\end{center}
 \end{figure}
+
+\newpage
+\subsubsection{Video Game Description Language}
+
+Le \textbf{V}ideo \textbf{G}ame \textbf{D}escription \textbf{L}anguage\cite{vgdl} (VGDL) est un langage imaginé et implémenté par Tom Schaul, qui permet de générer un jeu vidéo en 2D en quelques dizaines de lignes de codes.
+
+Dans un premier temps, il faut fournir au programme un fichier texte, divisé en quatre sections, chacune décrivant un aspect du jeu :
+
+\begin{itemize}
+	\item \textbf{LevelMapping} : dans cette section est expliquée comment transformer le fichier de description de niveau en niveau.
+	\item \textbf{SpriteSet} : dans cette section sont définies toutes les entités visibles que le jeu utilisera (supporte l'héritage).
+	\item \textbf{InteractionSet} : dans cette section sont définies les actions à effectuer lorsque deux sprites entrent en collision.
+	\item \textbf{TerminationSet} : dans cette section sont définies les conditions de victoire ou de défaite.
+\end{itemize}
+
+\begin{figure}[!h]%
+	\begin{center} 
+		\includegraphics[width=0.60\columnwidth]{images/vgdlgame.jpg}%
+		\caption{Example de code pour produire un RPG classique}%
+	\end{center}
+\end{figure}
+
+\newpage
+Il faut ensuite lui fournir un autre fichier texte décrivant le niveau, dans lequel chaque caractère représente une entité.
+
+\begin{figure}[!h]%
+	\begin{center} 
+		\includegraphics[width=0.60\columnwidth]{images/vgdllevel.jpg}%
+		\caption{Exemple de texte pour produire un niveau}%
+	\end{center}
+\end{figure}
+
+
+
+\newpage
+\subsubsection{Angelina}
 
 Angelina est une IA qui, à partir d’une description en langage naturel, peut générer des jeux de plateforme 2D, avec une ambiance, des graphismes et un gameplay qui respectent (dans une certaine mesure) la description fournie.
 
@@ -614,7 +655,7 @@ Si dans les jeux, cet aspect peut presque passer inaperçu et n'est pas très pr
 
 Fable est un jeu sorti en 2004, et innovant pour son époque, de par la liberté qu’il laisse au joueur. En effet, le joueur peut se marier, divorcer, boire, jouer aux cartes, acheter, louer et revendre des maisons, se tourner vers les forces obscures ou le bien, massacrer des innocents, gardes ou bandits, entre autres activités diverses et variées.
 
-Ce qui suit est une anecdote tirée du blog d’un des développeurs du jeu, traduite, adaptée et commentée.
+Ce qui suit est une anecdote tirée du blog d’un des développeurs du jeu\cite{fable}, traduite, adaptée et commentée.
 
 %Les développeurs se sont également imposés deux règles qu’ils jugeaient vitales que le jeu suive, sans quoi il ne respecterait pas leur vision :
 %
