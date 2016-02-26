@@ -280,7 +280,17 @@ Cependant il existe une solution pour optimiser les poids d’un réseau de neur
 
 Actuellement il est courant d’utiliser les réseaux de neurones dans le domaine de l’intelligence artificielle. Mais qu’en est-il de l’intelligence artificielle (IA) dans les jeux vidéo ?
 
-TODO Utilisation des RN dans un jeu vidéo pour de l’IA. (Parler de rtNEAT\cite{stanley2005evolving})
+\newpage
+Il existe un logiciel implémentant une méthode de neuro évolution appelé NeuroEvolution of Augmenting Topologies (NEAT). Ce logiciel peut faire évoluer des réseaux de neurones d’une complexité sans limite depuis un état de départ. Il est donc possible, à l’aide d’une des implémentations faites dans un langage de programmation (tel que le C++ ou le Java), d’intégrer cette méthode dans un moteur de jeu vidéo.
+
+C’est le cas de NERO (Neuro-Evolving Robotic Operatives) qui utilise l’implémentation C++ de la méthode NEAT\cite{stanley2005evolving}. Ce jeu permet de jouer avec des agents intelligents adaptables par le joueur lui-même, qui doit faire évoluer sa propre armée de robots, simplement en contrôlant les récompenses associés à différents comportement (éviter l'ennemi, se regrouper, etc ...). Ensuite, les joueurs peuvent faire combattre leurs armées contre celles d'autres joueurs lors de compétitions en ligne.
+
+\begin{figure}[!h]%
+	\begin{center} 
+		\includegraphics[width=0.60\columnwidth]{images/nero.jpg}%
+		\caption{Combat daUn perceptron multicouche}%
+	\end{center}
+\end{figure}
 
 \newpage
 \subsubsection{Les arbres de comportement}
