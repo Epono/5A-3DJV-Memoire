@@ -31,6 +31,7 @@
 \usepackage[T1]{fontenc} % Required for accented characters
 \linespread{1.05} % Change line spacing here, Palatino benefits from a slight increase by default
 \usepackage{parskip} % add some space between paragraph 
+\usepackage{pdfpages}
  
 \makeatletter
 \renewcommand\@biblabel[1]{\textbf{#1.}} % Change the square brackets for each bibliography item from '[1]' to '1.'
@@ -48,6 +49,8 @@
 
 \begin{document}
 
+\includepdf[pages={1}]{images/pagedegarde.pdf}
+
 %----------------------------------------------------------------------------------------
 %	ESSAY BODY
 %----------------------------------------------------------------------------------------
@@ -58,9 +61,9 @@
 \subsection{Remerciements}
 Nous tenons à remercier :
 
-M. Alain LIORET, notre maître de mémoire, pour son soutien, sa passion, et pour nous avoir guidé dans notre travail. Il nous a donné de très bonnes pistes de recherches, ainsi que de bons conseils dans nos choix.
+M. Alain LIORET, notre maître de mémoire, pour son soutien, sa passion, et pour nous avoir guidé dans notre travail. Il nous a donné de très bonnes pistes de recherches, et a su nous conseiller dans nos choix.
 
-L’équipe pédagogique de l’ESGI, pour la qualité des cours dispensés à l’ESGI, qui nous ont donné la motivation nécessaire pour rédiger ce mémoire.
+L’équipe pédagogique de l’ESGI, pour la qualité de leurs cours, qui nous ont donné la motivation nécessaire pour rédiger ce mémoire.
 
 \newpage
 \subsection{Résumé}
@@ -115,7 +118,7 @@ Dans les jeux vidéo, l’intelligence artificielle est utilisée pour donner vi
 
 Dans la plupart des jeux, les PNJ ont par exemple connaissance de l’ensemble de la carte et de ce qui s’y déroule. Dans les jeux de type FPS (« First Person Shooter »), les IA sont souvent dotées d’une visée parfaite. Par conséquent, il est très souvent nécessaire de brider ces capacités hors normes pour donner au joueur une sensation d’équité. 
 
-L’histoire de l’IA dans ce domaine remonte sans doute au début des années 1940s avec le jeu de stratégie pure Nim (publié en 1942). L’IA était alors capable de gagner, même contre des joueurs chevronnés !
+L’histoire de l’IA dans ce domaine remonte au début des années 1940 avec le jeu de stratégie pure Nim (publié en 1942). L’IA était alors capable de gagner, même contre des joueurs chevronnés !
 
 \begin{figure}[!h]%
 	\begin{center} 
@@ -141,7 +144,7 @@ Plus tard entre les années 1960 et le début des années 1970, les premiers jeu
 \subsection{Les premières IA pour le jeu vidéo}
 Dans les années 1970, les premiers jeux avec des modes 1 joueur apparaissent. Les plus remarquables sont Chasse au Wumpus et Star Trek en 1972 qui utilisaient des Stored Patterns\footnote{Les stored patterns sont des suites d’instructions répétées en boucle par l’agent. Hormis ce qui lui est dit de faire, il ne fera rien d’autre}  pour implémenter les IA des ennemis. L’utilisation des microprocesseurs a permis une augmentation du nombre de mouvement. 
 
-Dans la fin des années 1970 et jusqu’au début des années 1990 : c’est l’âge d’or des jeux d’arcade. Les IA se popularisent. Nombre de jeux (comme Space Invaders en 1978 et Galaxian en 1979) intégraient maintenant une IA plus complexe avec différents niveaux de difficulté et de nombreux modèles de mouvement. 
+Dans la fin des années 1970 et jusqu’au début des années 1990 : c’est l’âge d’or des jeux d’arcade. Les IA se popularisent. Nombre de jeux (comme Space Invaders en 1978 et Galaxian en 1979) intègrent maintenant une IA plus complexe avec différents niveaux de difficulté et de nombreux modèles de mouvement. 
 
 \begin{itemize}
 	\item \textbf{Pacman} (1980) a introduit un pattern IA pour les jeux de labyrinthe, avec des personnalités distinctes pour chaque ennemi.
@@ -171,9 +174,11 @@ Longtemps délaissée au profit des graphismes des jeux vidéo, cette branche co
 \newpage
 \section{Les applications possibles prometteuses}
 
-Dans cette section, nous aborderons certaines des techniques les plus utilisées dans les jeux vidéo, ou qui 
+Dans cette section, nous aborderons certaines des techniques les plus utilisées dans les jeux vidéo, plus particulièrement dans le domaine de l’intelligence artificielle. Nous étudierons leurs caractéristiques ainsi que les avantages et les inconvénients de chacune plus particulièrement.
 
 \subsection{Le Machine Learning}
+
+Le Machine Learning est un domaine extrêmement vaste, aussi nous ne parlerons ici que des réseaux de neurones et des arbres de comportement.
 
 \subsubsection{Les réseaux de neurones}
 
@@ -181,6 +186,7 @@ Un réseau de neurones artificiel (RNA) est un paradigme de traitement de l’in
 
 La simulation de réseaux de neurones apparaît comme étant un développement récent. Cependant, ce domaine a été établi avant l’avènement des ordinateurs, et a survécu à au moins un revers majeur et à plusieurs époques. Le premier réseau de neurones artificiel fût produit en 1943 par le neurophysiologiste Warren McCulloch et le logicien Walter Pits. Mais la technologie disponible à cette époque n’a pas permis d’en faire grand-chose.
 
+\newpage
 Les réseaux de neurones, avec leur remarquable capacité de déduire un sens à des données compliquées ou imprécises, peuvent être utilisés pour extraire des motifs ou pour détecter des tendances qui sont trop complexes pour être notifiés par des humains ou bien même d’autres techniques informatiques. Un réseau de neurones entraîné peut être assimilé à un « expert » dans la catégorie d’information qu’il analyse. Cet expert peut être utilisé pour fournir des prévisions en lui donnant de nouvelles situations et répondre à des questions du type « Que se passerait-il si … ? ».
 
 D’autres avantages incluent :
@@ -249,7 +255,7 @@ Le XOR est l’équivalent du OR et du NOT AND. En d’autres termes A XOR B vau
 
 \begin{figure}[!h]%
 	\begin{center} 
-		\includegraphics[width=0.60\columnwidth]{images/xor.jpg}%
+		\includegraphics[width=0.30\columnwidth]{images/xor.jpg}%
 		\caption{Tables de vérité XOR}%
 	\end{center}
 \end{figure}
@@ -258,6 +264,7 @@ Le problème représenté ci-dessus n’est pas séparable linéairement. En eff
 
 Nous venons de voir qu’il était impossible pour un perceptron de résoudre le problème du XOR. Mais il n’est pas impossible pour un réseau de deux perceptrons de résoudre le XOR. Si un perceptron résout le OR et qu’un autre se charge du NOT AND alors les deux perceptrons combinés peuvent venir à bout du XOR.
 
+\newpage
 \begin{figure}[!h]%
 	\begin{center} 
 		\includegraphics[width=0.60\columnwidth]{images/perceptronmulticouche.jpg}%
@@ -271,7 +278,7 @@ Cependant il existe une solution pour optimiser les poids d’un réseau de neur
 
 Actuellement il est courant d’utiliser les réseaux de neurones dans le domaine de l’intelligence artificielle. Mais qu’en est-il de l’intelligence artificielle (IA) dans les jeux vidéo ?
 
-//TODO Utilisation des RN dans un jeu vidéo pour de l’IA. (Parler de rtNEAT)
+TODO Utilisation des RN dans un jeu vidéo pour de l’IA. (Parler de rtNEAT)
 
 \newpage
 \subsubsection{Les arbres de comportement}
@@ -323,15 +330,16 @@ Dans beaucoup de jeux d’aujourd’hui, afin de toucher un public plus large al
 
 Même s’il est possible dans certains jeux de modifier la difficulté en cours de jeu, peu de joueurs l’utilisent, par fierté, et finissent soit par se débloquer après une session de jeu peu agréable, soit par abandonner devant un jeu qu’ils trouvent injuste.
 
-C’est pour résoudre ce problème que des jeux utilisent le Dynamic Game Difficulty Balancing. C’est une technique qui permet de changer dynamiquement certains éléments (comportement de PNJ, paramètres, etc ...) au cours du jeu, pour mieux s’adapter au niveau de compétence du joueur, ou même (plus rarement) à son style de jeu. Son but est donc de moduler la difficulté, afin que le jeu représente un challenge intéressant du début à la fin et de garder le joueur dans ce que l'on appelle le flow (état dans lequel le joueur est concentré sur le jeu et ne voit pas le temps passer).
+C’est pour résoudre ce problème que des jeux utilisent le Dynamic Game Difficulty Balancing\cite{hunicke2005case}. C’est une technique qui permet de changer dynamiquement certains éléments (comportement de PNJ, paramètres, etc ...) au cours du jeu, pour mieux s’adapter au niveau de compétence du joueur, ou même (plus rarement) à son style de jeu. Son but est donc de moduler la difficulté, afin que le jeu représente un challenge intéressant du début à la fin et de garder le joueur dans ce que l'on appelle le flow (état dans lequel le joueur est concentré sur le jeu et ne voit pas le temps passer).
 
 \begin{figure}[!h]%
 	\begin{center} 
 		\includegraphics[width=0.60\columnwidth]{images/flow.png}%
-		\caption{Flow}%
+		\caption{Représentation de la zone de flow}%
 	\end{center}
 \end{figure}
 
+\newpage
 S’il existe presque autant d’approches différentes à cette technique que de jeux qui l’utilisent, il faut néanmoins dans tous les cas régulièrement déterminer et analyser les performances du joueur au moyen d’une fonction heuristique, qui fournit rapidement un résultat concret, même si pas optimal (très utilisé pour les jeux, dans lesquels les performances sont critiques).
 
 De plus, des études ont montré qu’une fonction heuristique déterminée à l’aide d’un réseau de neurones artificiels (ANN) donne de meilleurs résultats qu’une fonction heuristique faite par des humains.
@@ -430,7 +438,7 @@ Malheureusement cette dernière technique provoque un effet nommé « rubber ban
 
 Le meilleur exemple actuel (connu) pour ce type d’IA se trouve du côté de Valve, et plus précisément dans leur survival horror FPS, Left 4 Dead (2008). Dans celui ci, un groupe de quatre joueurs doit se frayer un chemin dans un niveau infesté de zombies en tout genre.
 
-Cette intelligence artificielle, surnommée « \textbf{\textit{AI Director}} » (que nous appellerons simplement par la suite « \textit{Director} ») analyse constamment les performances des joueurs afin de proposer une expérience plus intéressante. Mais il ne se contente pas d’analyser les performances individuelles, il analyse également la performance collective du groupe.
+Cette intelligence artificielle, surnommée « \textbf{\textit{AI Director}} »\cite{aidirector} (que nous appellerons simplement par la suite « \textit{Director} ») analyse constamment les performances des joueurs afin de proposer une expérience plus intéressante. Mais il ne se contente pas d’analyser les performances individuelles, il analyse également la performance collective du groupe.
 
 \begin{figure}[!h]%
 	\begin{center} 
@@ -678,7 +686,7 @@ La vallée dérangeante est une théorie selon laquelle plus une créature andro
 \begin{figure}[!h]%
 	\begin{center} 
 		\includegraphics[width=0.60\columnwidth]{images/uncannyValley.png}%
-		\caption{Vallée dérangeante}%
+		\caption{Représentation de la vallée dérangeante}%
 	\end{center}
 \end{figure}
 
@@ -794,7 +802,7 @@ ELIZA, créé en 1966, par Joseph Weizenbaum, MIT, fut le premier agent conversa
 
 En 1997, Rollo Carpenter, un informaticien britannique, crée Jabberwacky. C’est lui aussi un agent conversationnel, mais au lieu d’avoir un comportement fixé à l'avance, celui-ci est capable d’apprendre. En effet, il stocke dans une base de données toutes les conversations des utilisateurs, et s’en sert pour choisir une réponse à la question posée par l’utilisateur.
 
-Ce n’est que onze ans plus tard, en 2008 que Rollo Carpenter met en ligne Cleverbot, descendant spirituel de Jabberwacky. Celui-ci dispose également d’une base de données des conversations avec les utilisateurs parmi lesquelles il va chercher la réponse la plus appropriée, mais a également une notion de contexte, grâce à un système de mémoire à court terme, qui donne un poids plus important aux conversations récentes.
+Ce n’est que onze ans plus tard, en 2008 que Rollo Carpenter met en ligne Cleverbot\cite{carpenter2011cleverbot}, descendant spirituel de Jabberwacky. Celui-ci dispose également d’une base de données des conversations avec les utilisateurs parmi lesquelles il va chercher la réponse la plus appropriée, mais a également une notion de contexte, grâce à un système de mémoire à court terme, qui donne un poids plus important aux conversations récentes.
 
 %\newpage
 %\begin{figure}[!h]%
