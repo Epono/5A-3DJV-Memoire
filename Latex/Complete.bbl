@@ -1,52 +1,81 @@
 \begin{thebibliography}{10}
 
-\bibitem{hardware:cdromspeed}
-Computer Hope.
-\newblock Cd-rom transfer speeds, 2012.
+\bibitem{rienavoir}
+JULIAN TOGELIUS.
+\newblock What if videogames had actual ai?
 
-\bibitem{hardware:dvdromspeed}
-Gabriel Torres.
-\newblock Measuring cd-rom and dvd-rom performance, 11 2004.
+\bibitem{history}
+Louis Banvillet and Brice~Le Dain.
+\newblock L’intelligence artificielle dans les jeux vidéo, 2013.
 
-\bibitem{hardware:bdromspeed}
+\bibitem{rna}
+Christos Stergiou and Dimitrios Siganos.
+\newblock Neural networks.
+
+\bibitem{shiffman2012nature}
+Daniel Shiffman, Shannon Fry, and Zannah Marsh.
+\newblock {\em The nature of code}.
+\newblock D. Shiffman, 2012.
+
+\bibitem{stanley2005evolving}
+Kenneth~O Stanley, Bobby~D Bryant, and Risto Miikkulainen.
+\newblock Evolving neural network agents in the nero video game.
+
+\bibitem{bt}
+Renato de~Pontes~Pereira.
+\newblock An introduction to behavior trees.
+
+\bibitem{hunicke2005case}
+Robin Hunicke.
+\newblock The case for dynamic difficulty adjustment in games.
+\newblock In {\em Proceedings of the 2005 ACM SIGCHI International Conference
+  on Advances in computer entertainment technology}, pages 429--433. ACM, 2005.
+
+\bibitem{aidirector}
+Michael Booth.
+\newblock The ai systems of left 4 dead.
+
+\bibitem{levine_et_al:DFU:2013:4337}
+John Levine, Clare~Bates Congdon, Marc Ebner, Graham Kendall, Simon~M. Lucas,
+  Risto Miikkulainen, Tom Schaul, and Tommy Thompson.
+\newblock {General Video Game Playing}.
+\newblock In Simon~M. Lucas, Michael Mateas, Mike Preuss, Pieter Spronck, and
+  Julian Togelius, editors, {\em Artificial and Computational Intelligence in
+  Games}, volume~6 of {\em Dagstuhl Follow-Ups}, pages 77--83. Schloss
+  Dagstuhl--Leibniz-Zentrum fuer Informatik, Dagstuhl, Germany, 2013.
+
+\bibitem{mariolives}
+Stephan Ehrenfeld, Fabian Schrodt, and Prof. Dr. Martin~V. Butz.
+\newblock Mario lives! an adaptive learning ai approach for generating a living
+  and conversing mario agent, 2015.
+
+\bibitem{schaul2013video}
+Tom Schaul.
+\newblock A video game description language for model-based or interactive
+  learning.
+\newblock In {\em Computational Intelligence in Games (CIG), 2013 IEEE
+  Conference on}, pages 1--8. IEEE, 2013.
+
+\bibitem{cook2014ludus}
+Michael Cook and Simon Colton.
+\newblock Ludus ex machina: Building a 3d game designer that competes alongside
+  humans.
+\newblock 2014.
+
+\bibitem{scdli}
 Wikipedia.
-\newblock Blu-ray disc, 2013.
+\newblock Suspension consentie de l'incrédulité.
 
-\bibitem{hardware:hddspeed}
+\bibitem{vallee}
 Wikipedia.
-\newblock Hard disk drive, 2013.
+\newblock Vallée dérangeante.
 
-\bibitem{hardware:ssdspeed}
-Wikipedia.
-\newblock Solid-state drive, 2013.
+\bibitem{fable}
+Dene and Simon Carter.
+\newblock Game designers vs. the public, 2004.
 
-\bibitem{industry:streaming-for-loading}
-Fredrik~Lönn (Gamasutra).
-\newblock Streaming for loading in next generation games, 2000.
-
-\bibitem{industry:justcause-streaming}
-Gamasutra.
-\newblock About streaming in just cause, 2013.
-
-\bibitem{industry:dungeonsiege-streaming}
-Scott Bilas.
-\newblock About streaming in dungeon siege, 2003.
-
-\bibitem{compression:images-compression-formats}
-Paula Aguilera.
-\newblock Comparison of different image compression formats.
-
-\bibitem{compression:meshes}
-Pierre Alliez.
-\newblock Meshes compression, 2005.
-
-\bibitem{compression:video}
-Nguyen Thi~Anh Tuyet.
-\newblock Compression vidéo pour des images de synthèse, optimisation de
-  débit, 2010.
-
-\bibitem{compression:textures}
-Lars Weinand.
-\newblock 3dc : compression et normal map, 2004.
+\bibitem{carpenter2011cleverbot}
+Rollo Carpenter.
+\newblock Cleverbot, 2011.
 
 \end{thebibliography}

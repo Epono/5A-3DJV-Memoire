@@ -404,7 +404,7 @@ Ici, la difficulté choisie au départ sert de bornes pour la difficulté dynami
 \newpage
 \subsubsection{La série Mario Kart : objets et PNJ}
 
-Mario Kart est un jeu de course dans lequel le joueur peut oenir des objets pour l'aider en roulant sur un cube. Ces cubes donnent un objet aléatoire, mais dépendant de la position du joueur dans la course. Ainsi, si le joueur est bien placé, il aura des chances augmentées de recevoir des objets considérées « faibles », comme une banane ou une carapace verte, tandis que si le joueur se retrouve à la fin du classement, ce sont ses chances de recevoir des objets considérées « fortes », comme la fameuse tortue bleue qui augmentent.
+Mario Kart est un jeu de course dans lequel le joueur peut obtenir des objets pour l'aider en roulant sur un cube. Ces cubes donnent un objet aléatoire, mais dépendant de la position du joueur dans la course. Ainsi, si le joueur est bien placé, il aura des chances augmentées de recevoir des objets considérées « faibles », comme une banane ou une carapace verte, tandis que si le joueur se retrouve à la fin du classement, ce sont ses chances de recevoir des objets considérées « forts », comme la fameuse tortue bleue qui augmentent.
 
  Le tableau ci-dessous représente les probabilités d'obtenir un objet en fonction de la position dans la course dans Mario Kart 64.
 
@@ -467,7 +467,7 @@ Dans la figure ci-dessus, qui représente le parcours d'un niveau, la barre du h
 \newpage
 De plus, le \textit{Director} ne se contente pas de modifier les éléments du gameplay, c’est également lui qui gère les répliques lancées par les personnages, modifie dynamiquement la musique pour s’adapter au moment, ainsi que la position des objets récupérables par les joueurs. Il est aussi responsable de certains effets sonores et visuels, qu’il peut décider d’ajouter pour amplifier la tension.
 
-le \textit{Director} de Left 4 Dead 2 est même capable de modifier dynamiquement l’agencement du niveau et donc de modifier le chemin que les joueurs doivent suivre.
+Le \textit{Director} de Left 4 Dead 2 est même capable de modifier dynamiquement l’agencement du niveau et donc de modifier le chemin que les joueurs doivent suivre.
 
 Malheureusement, son existence et son fonctionnement étant connu par les joueurs, ceux-ci n’hésitent pas à en tirer profit pour rendre certaines parties du jeu plus simple en faisant exprès de mal jouer pour réduire la difficulté à certains moments critiques du jeu.
 
@@ -488,7 +488,7 @@ Bientôt, il n’y aura plus du tout besoin d’humains dans la boucle de créat
 
 Si les IA capables de jouer à des jeux de société existent depuis longtemps, celles-ci étaient limitées et ne pouvaient jouer qu’à un seul jeu. Ce n’est pas le cas des IA suivant la technique de GGP (\textbf{G}eneral \textbf{G}ame \textbf{P}laying), et son homologue pour les jeux vidéo, la technique de GVGP\cite{levine_et_al:DFU:2013:4337} (\textbf{G}eneral \textbf{V}ideo \textbf{G}ame \textbf{P}laying).
 
-Grâce à ce type d'IA, il serait possible de réduire la quantité de tests à effectuer par des humains sur le jeu pour découvrir les bugs de haut niveau. Par exemple, détecter les failles de gameplay avant les joueurs pour éviter les abus, ou vérifier si un monde généré procéduralement est jouable par des humains.
+Grâce à ce type d'IA, il sera bientôt possible de réduire la quantité de tests à effectuer par des humains sur le jeu pour découvrir les bugs qui sont normalement découverts par des utilisateurs humains. Par exemple, détecter les failles de gameplay avant les joueurs pour éviter les abus, ou vérifier si un monde généré procéduralement est jouable par des humains.
 
 Une autre application, à plus long terme, serait d'éviter aux développeurs d'avoir à adapter, voir réécrire, une IA pour chaque jeu. En effet, une IA suffisamment autonome avec un large champ d'apprentissage devrait être capable d'apprendre seule à jouer à n'importe quel type de jeu, dans le rôle de n'importe quel PNJ, réduisant considérablement le temps de développement d'un jeu.
 
@@ -519,8 +519,6 @@ Un autre point intéréssant de cette IA est qu'elle est (relativement) conscien
 Comme nous l'avons vu dans la partie précédente, l'époque où il n'y avait que les humains qui jouaient aux jeux vidéo est révolue, dorénavant, même les IA apprennent à y jouer.
 
 Mais une autre époque pourrait également bientôt se finir. En effet, depuis quelques années, d'autres projets d'IA ont vu le jour, non pas pour jouer aux jeux vidéo, mais pour les créer. 
-
-Ces programmes ne demandent qu'une description sommaire mais livrent un jeu jouable.
 
 \begin{figure}[!h]%
 	\begin{center} 
@@ -580,7 +578,7 @@ Comme pour le VGDL, il faut lui fournir un fichier texte (en YAML, un format de 
 	\end{center}
 \end{figure}
 
-En revanche une des forces d'ANGELINA est qu'elle n'a pas besoin de fichier pour créer un environnement. C'est donc elle qui a la responsabilité de générer un environnement logique et jouable, dans lequel il est possible de se déplacer. Cela implique une analyse poussée des mécaniques du jeu pour définir les zones atteignables par le joueur, et éviter de créer une situation de « Softlock », dans laquelle le joueur ne peut plus progresser.
+En revanche une des forces d'ANGELINA est qu'elle n'a pas besoin de fichier pour créer un environnement. C'est donc elle qui a la responsabilité de générer un environnement logique, dans lequel il est possible de se déplacer. Cela implique une analyse poussée des mécaniques du jeu pour définir les zones atteignables par le joueur, et éviter de créer une situation de « Softlock », dans laquelle le joueur ne peut plus progresser.
 
 \newpage
 Utilisée lors du Ludum Dare 28, qui avait pour thème « You Only Get One », il s'agit de la première IA à participer à une compétition de game designer. Le but du jeu qu'elle a créé pour cette occasion est de ramasser tous les bateaux présents dans le niveau, en évitant des êtres humanoïdes non identifiés patrouillant dans les salles, le tout dans une ambiance extrêmement glauque. La description du jeu a elle aussi été générée par ANGELINA, suivant un template. 
@@ -636,6 +634,7 @@ Ces actions, souvent sans le vouloir, cassent le quatrième mur, et mettent fin 
 	\end{center}
 \end{figure}
 
+\newpage
 Il peut ainsi s’immerger dans un univers avec des éléments imaginaires, pour peu que ceux-ci restent crédibles, et que les règles qui régissent l’œuvre restent constantes.
 Lorsque ce contrat est rompu (par définition, il ne peut être rompu que par l’œuvre de fiction), il est difficile de faire replonger un joueur dans l’univers du jeu, avec lequel il restera toujours un peu distant, et cela renforce le solipsisme du joueur.
 
@@ -649,7 +648,7 @@ Lorsque ce contrat est rompu (par définition, il ne peut être rompu que par l�
 \newpage
 \subsubsection{Solipsisme}
 
-Le solipsisme\cite{solipsisme} (du latin \textbf{\textit{solus}}, « seul » et \textbf{\textit{ipse}}, « soi-même ») est une attitude selon laquelle, la seule certitude absolue pour le sujet pensant, est que lui-même existe. Cette attitude est répandue dans la société, et il est tout à fait normal de l’avoir ressenti de façon passagère.
+Le solipsisme (du latin \textbf{\textit{solus}}, « seul » et \textbf{\textit{ipse}}, « soi-même ») est une attitude selon laquelle, la seule certitude absolue pour le sujet pensant, est que lui-même existe. Cette attitude est répandue dans la société, et il est tout à fait normal de l’avoir ressenti de façon passagère.
 
 Mais c'est dans les jeux vidéo (principalement ceux à un seul joueur) qu'elle est le plus présente, et qu’on essaie le plus de la faire disparaître. En effet, le but d’un jeu narratif est d’immerger le joueur, et un très bon moyen pour cela est de lui faire oublier qu’il est la seule personne effectivement douée de conscience.
 
@@ -847,7 +846,7 @@ Lors du développement de nos prochains jeux, nous aurons ainsi une meilleure id
 \newpage
 \section{Conclusion}
 
-Ainsi nous avons vu qu'à ses débuts, l'intelligence artificielle dans les jeux vidéo était très limitée, et qu'on ne pouvait même pas vraiment parler d'intelligence, mais plutôt de « réaction programmée à une action donnée ». Mais très vite, des jeux comme F.E.A.R. ou Black \& White vont apparaître et montrer de nouvelles techniques et applications pour le jeu vidéo.
+Ainsi nous avons vu qu'à ses débuts, l'intelligence artificielle dans les jeux vidéo était très limitée, et qu'on ne pouvait même pas vraiment parler d'intelligence, mais plutôt de « réaction programmée ». Mais très vite, des jeux comme F.E.A.R. ou Black \& White vont apparaître et montrer de nouvelles techniques et applications pour le jeu vidéo.
 
 Nous avons vu que les applications pour l'IA dans le monde du jeu vidéo étaient nombreuses, avec notamment le Machine Learning, domaine extrêmement vaste et prometteur pour les jeux vidéo, encore jeune mais de plus en plus utilisé, en nous attardant seulement sur les réseaux de neurones (utilisées dans rtNEAT), et les arbres de comportement, très couramment utilisées pour des PNJ avec un comportement fixé à l'avance.
 
