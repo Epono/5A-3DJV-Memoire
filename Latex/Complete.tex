@@ -269,8 +269,52 @@ Entraîner ce genre de perceptrons (Figure 7) est beaucoup plus compliqué. Avec
 
 Cependant il existe une solution pour optimiser les poids d’un réseau de neurones multicouches qui est connue sous le nom de rétropropagation du gradient (ou backpropagation en anglais). La sortie du réseau est générée de la même manière qu’un perceptron. La différence ici est que les données passent par une couche supplémentaire de neurones avant d’atteindre la sortie. Entraîner le réseau (c’est-à-dire ajuster les poids) implique aussi de prendre en compte l’erreur (la différence entre le résultat désiré et la supposition). L’erreur, néanmoins doit être retransmise à travers tout le réseau. La dernière erreur ajuste en fin de compte le poids de toutes les connexions.
 
+Actuellement il est courant d’utiliser les réseaux de neurones dans le domaine de l’intelligence artificielle. Mais qu’en est-il de l’intelligence artificielle (IA) dans les jeux vidéo ?
+
+//TODO Utilisation des RN dans un jeu vidéo pour de l’IA. (Parler de rtNEAT)
+
 \newpage
 \subsubsection{Les arbres de comportement}
+
+Dans le domaine des jeux vidéo, il est important de développer des agents dotés d’une intelligence artificielle qui puissent interagir avec l’environnement ou même avec d’autres agents. Dans les jeux un agent peut être un objet, une créature, une personne ou même un système agissant dans le monde virtuel. Suivant le genre, les mécaniques ou le but du jeu, les agents virtuels peuvent être bénéfique pour plusieurs raisons, telles que :
+
+\begin{itemize}
+	\item Fournir des ennemis et des alliés au joueur, et donc créer du contenu au jeu.
+	\item Créer des entités intelligentes qui viennent compléter le monde virtuel, rendant ainsi l’expérience du joueur plus immersive.
+	\item Créer des personnages capables de capter l’empathie du joueur.
+\end{itemize}
+
+En général les agents virtuels peuvent interagir avec les humains (sous forme d’avatar dans le jeu) ou avec d’autres agents artificiels. Les agents autonomes intelligents dans les jeux sont appelés PNJ (Personnage Non Joueur) et possèdent des organes sensoriels ou des mécanismes d’actions particuliers à leur but mais aussi à l’environnement qui les entoure. Un PNJ peut, par exemple, être un vendeur de potion humain restant figé dans la ville, attendant que le joueur vienne lui cliquer dessus, ou alors incarner le compagnon du joueur principal, le suivant ainsi durant toutes ses aventures.
+
+Pour développer des agents intelligents, il est nécessaire de construire un vaste répertoire de comportements. Un comportement implique le contrôle de plusieurs actions à travers le temps. Par exemple, imaginez un jeu d’action où les PNJ ont un comportement d’auto-protection. Pour accomplir ce comportement, le PNJ doit vérifier s’il est en danger (par exemple, si sa vie est basse), si c’est confirmé, le PNJ devra alors s’éloigner du joueur. Le nombre de comportements qu’un agent peut utiliser indique le nombre de situations différentes qu’il peut reconnaître et dont il peut agir en conséquence.
+
+Il est aussi important que la méthode utiliser pour contrôler les agents permette une coordination efficace des comportements, afin qu’un agent puisse accomplir son but efficacement, c’est-à-diresans effectuer d’actions aléatoires, inutiles ou stupides (dans un combat, un PNJ ne peut pas s’arrêter pour vendre des objets).
+
+Les agents intelligents possédant des larges répertoires de comportement efficace rendent l’expérience interactive avec l’humain plus intéressante. De plus, dans les jeux vidéo, ces agents ne frustrent pas le joueur, lui permettant une meilleure immersion dans le jeu. Cependant ces résultats ont un coup en terme de complexité tels que :
+
+\begin{itemize}
+	\item \textbf{La vitesse} : Beaucoup de comportements implique une forte consommation de la mémoire pour les conserver et une forte utilisation du processeur pour les exécuter. Cependant dans les jeux, rare est la place faite à la partie IA dans la répartition de l’utilisation mémoire/processeur, bien souvent au profit du rendu graphique.
+	\item \textbf{La transparence et la fiabilité} : Les développeurs doivent avoir un contrôle total sur les actions de leurs agents. Il ou elle doit être capable de déboguer et de savoir, de manière relativement simple, l’état interne de l’agent, en étant capable de prédire approximativement ses prochaines actions. Ce besoin est particulièrement important pour des raisons de sécurité. Perdre le contrôle de ce que l’agent fait et du moment où il doit le faire peut causer des soucis. En effet, des agents sans contrôle peuvent ruiner l’expérience de jeu. Par conséquent, la quantité de comportements peut rendre le développement plus compliqué et résulter en un système peu fiable.
+\end{itemize}
+
+\begin{figure}[!h]%
+	\begin{center} 
+		\includegraphics[width=0.60\columnwidth]{images/fsm.jpg}%
+		\caption{Une machine à états finis}%
+	\end{center}
+\end{figure}
+
+\newpage
+
+L’arbre de comportement est venu remplacer la machine à états finis dans le domaine du jeu vidéo en apportant plusieurs avantages :
+
+\begin{itemize}
+	\item \textbf{La maintenabilité} : les transitions de l’arbre de décision sont définies dans sa structure, et non par les conditions à l’intérieur des états. Grâce à cela, les nœuds peuvent être conçus indépendamment les uns des autres, ainsi, lorsqu’on ajoute ou retire de nouveaux nœuds (ou même des sous arbres) dans un petite partie de l’arbre, il n’est pas nécessaire de changer les autres parties du modèle.
+	\item \textbf{La « scalabilité »}: Lorsqu’un arbre de comportement possède beaucoup de nœuds, il est possible de le décomposer en petits sous arbres, préservant ainsi la lisibilité du modèle graphique.
+	\item \textbf{La réutilisabilité} : Grâce à l’indépendance des nœuds dans l’arbre de comportement, les sous arbres sont eux aussi indépendants. Cela permet la réutilisation des nœuds ou des sous arbres à travers d’autres arbres ou projets.
+	\item \textbf{La spécialisation} : Bien que les nœuds de l’arbre soient indépendants, ils restent reliés à cause de la structure de l’arbre. Ceci permet au concepteur de construire des sous arbres spécifiques à une tâche sans perdre la flexibilité de son modèle.
+	\item \textbf{La parallélisation} : Les arbres de comportements peuvent spécifier des nœuds parallèles qui exécuteront leurs enfants au même instant sans perdre le contrôle du modèle d’exécution. Cela est possible car la parallélisation est contenue localement au nœud parallèle.
+\end{itemize}
 
 \newpage
 \subsection{Dynamic Game Difficulty Balancing}
@@ -324,8 +368,6 @@ Dans Resident Evil 5 (2009), il est possible de sélectionner une difficulté de
 	\item Le comportement et panel d'attaque des ennemis.
 \end{itemize}
 
-Ici, la difficulté choisie au départ sert de bornes pour la difficulté dynamique. Ainsi, si le joueur choisit la difficulté minimale, même s’il se débrouille très bien par la suite, la difficulté dynamique ne pourra pas dépasser un certain seuil. Et inversement si le joueur choisit une difficulté initiale élevée, et que par la suite ne fait que mourir, la difficulté ne pourra pas baisser en dessous d’un certain niveau.
-
 Le tableau ci-dessous indique les notes associés aux différentes actions du joueur :
 
 \begin{center} 
@@ -346,6 +388,8 @@ Le tableau ci-dessous indique les notes associés aux différentes actions du jo
 		\hline
 	\end{tabular}
 \end{center}
+
+Ici, la difficulté choisie au départ sert de bornes pour la difficulté dynamique. Ainsi, si le joueur choisit la difficulté minimale, même s’il se débrouille très bien par la suite, la difficulté dynamique ne pourra pas dépasser un certain seuil. Et inversement si le joueur choisit une difficulté initiale élevée, et que par la suite ne fait que mourir, la difficulté ne pourra pas baisser en dessous d’un certain niveau.
 
 \newpage
 \subsubsection{La série Mario Kart : objets et PNJ}
@@ -432,13 +476,11 @@ Malheureusement, son existence et son fonctionnement étant connu par les joueur
 
 Bientôt, il n’y aura plus du tout besoin d’humains dans la boucle de création et consommation de jeu.
 
-Si les IA capables de jouer à des jeux de société existent depuis longtemps, celles-ci étaient limitées et ne pouvaient jouer qu’à un seul jeu. Ce n’est pas le cas des IA suivant la technique de GGP (\textbf{G}eneral \textbf{G}ame \textbf{P}laying), et son homologue pour les jeux vidéo, la technique de GVGP (\textbf{G}eneral \textbf{V}ideo \textbf{G}ame \textbf{P}laying).
+Si les IA capables de jouer à des jeux de société existent depuis longtemps, celles-ci étaient limitées et ne pouvaient jouer qu’à un seul jeu. Ce n’est pas le cas des IA suivant la technique de GGP (\textbf{G}eneral \textbf{G}ame \textbf{P}laying), et son homologue pour les jeux vidéo, la technique de GVGP\cite{levine_et_al:DFU:2013:4337} (\textbf{G}eneral \textbf{V}ideo \textbf{G}ame \textbf{P}laying).
 
+Grâce à ce type d'IA, il serait possible de réduire la quantité de tests à effectuer par des humains sur le jeu pour découvrir les bugs de haut niveau. Par exemple, détecter les failles de gameplay avant les joueurs pour éviter les abus, ou vérifier si un monde généré procéduralement est jouable par des humains.
 
-Les applications possibles pour ce type d'IA sont multiples\cite{levine_et_al:DFU:2013:4337}.
-
-%Bêta testeur (“combos” opés, détecteurs de zone peu/trop visitées, etc)
-%http://drops.dagstuhl.de/opus/volltexte/2013/4337/pdf/8.pdf
+Une autre application, à plus long terme, serait d'éviter aux développeurs d'avoir à adapter, voir réécrire, une IA pour chaque jeu. En effet, une IA suffisamment autonome avec un large champ d'apprentissage devrait être capable d'apprendre seule à jouer à n'importe quel type de jeu, dans le rôle de n'importe quel PNJ, réduisant considérablement le temps de développement d'un jeu.
 
 \begin{figure}[!h]%
 	\begin{center} 
@@ -448,20 +490,18 @@ Les applications possibles pour ce type d'IA sont multiples\cite{levine_et_al:DF
 \end{figure}
 
 \newpage
-C’est un domaine qui a gagné en popularité ces dernières années, notamment grâce à une IA dotée d’un système de GVGP qui a gagné le prix du public de la compétition annuelle 2015\cite{mariolives} de GGP organisée par l’AAAI (\textbf{A}ssociation for the \textbf{A}dvancement of \textbf{A}rticifial \textbf{I}ntelligence).
+Ce domaine a gagné en popularité ces dernières années, notamment grâce à une IA de GVGP qui a gagné le prix du public de la compétition annuelle 2015\cite{mariolives} de GGP organisée par l’AAAI (\textbf{A}ssociation for the \textbf{A}dvancement of \textbf{A}rticifial \textbf{I}ntelligence).
 
 Cette IA est notamment capable d’apprendre à jouer à un niveau de Mario, un jeu de plateforme 2D, de s’adapter aux différents obstacles qui le composent, et même d’apprendre certaines mécaniques (sauter sur un Koopa pour le tuer).
-
-Il est également possible d'interagir avec cette IA et de lui poser des questions ou de lui donner des informations sur le jeu.
 
 \begin{figure}[!h]%
 	\begin{center} 
 		\includegraphics[width=0.60\columnwidth]{images/mario.jpg}%
-		\caption{Chemin }%
+		\caption{Prédiction de déplacement de l'IA}%
 	\end{center}
 \end{figure}
 
-
+Un autre point intéréssant de cette IA est qu'elle est (relativement) consciente d'exister. Elle dispose ainsi de plusieurs émotions (la peur, la satisfaction, la curiosité et la faim) qui conditionnent son comportement. Par exemple, si son niveau de curiosité est élevé, elle essayera d'interagir avec les éléments de son environnement, tandis que ramasser des pièces augmentera sa satisfaction. Il est également possible d'interagir avec cette IA et de lui poser des questions ou de lui donner des informations sur le jeu. 
 
 \newpage
 \subsection{Des jeux par les IA}
@@ -482,7 +522,7 @@ Ces programmes ne demandent qu'une description sommaire mais livrent un jeu joua
 \newpage
 \subsubsection{Video Game Description Language}
 
-Le \textbf{V}ideo \textbf{G}ame \textbf{D}escription \textbf{L}anguage\cite{vgdl} (VGDL) est un langage imaginé et implémenté par Tom Schaul, qui permet de générer un jeu vidéo en 2D en quelques dizaines de lignes de codes.
+Le \textbf{V}ideo \textbf{G}ame \textbf{D}escription \textbf{L}anguage\cite{schaul2013video} (VGDL) est un langage imaginé et implémenté par Tom Schaul, qui permet de générer un jeu vidéo en 2D en quelques dizaines de lignes de codes.
 
 Dans un premier temps, il faut fournir au programme un fichier texte, divisé en quatre sections, chacune décrivant un aspect du jeu :
 
@@ -510,23 +550,45 @@ Il faut ensuite lui fournir un autre fichier texte décrivant le niveau, dans le
 	\end{center}
 \end{figure}
 
+Le but premier de ce langage est de permettre la génération rapide d'une multitude de jeux, qui eux serviront à tester différentes techniques d'apprentissage, pour valider leur généralité.
 
+Le langage étant très jeune, il manque encore de fonctionnalités, mais son développeur a pour objectif d'ajouter le support du multi-joueur, d'améliorer le système de récompense pour faciliter le Reinforcement Learning, ou encore d'ajouter des ressources (vie, mana, etc ...) aux entités.
+
+Malgré cette jeunesse, le langage a déjà permis de reproduire des versions simplifiées de jeux classiques, comme Space Invaders (1978), Pac-Man (1980) ou encore Super Mario Bros (1985). 
 
 \newpage
-\subsubsection{Angelina}
+\subsubsection{ANGELINA}
 
-Angelina est une IA qui, à partir d’une description en langage naturel, peut générer des jeux de plateforme 2D, avec une ambiance, des graphismes et un gameplay qui respectent (dans une certaine mesure) la description fournie.
+ANGELINA\cite{cook2014ludus} (\textbf{A} \textbf{N}ovel \textbf{G}ame-\textbf{E}volving \textbf{L}abrat \textbf{I}’ve \textbf{N}amed \textbf{A}NGELINA) est une IA développée par Michael Cook, un chercheur britannique à l’université de Falmouth. Elle peut générer des jeux, avec une ambiance, des graphismes et un gameplay qui respectent (dans une certaine mesure) la description fournie.
 
-C’est un sujet de recherche développé par Michael Cook, un chercheur britannique à l’université de Falmouth.
+Comme pour le VGDL, il faut lui fournir un fichier texte (en YAML, un format de représentation de données avec une grande lisibilité), pour décrire les différentes entités qui composeront le jeu.
 
 \begin{figure}[!h]%
 	\begin{center} 
 		\includegraphics[width=0.60\columnwidth]{images/angelina.png}%
-		\caption{Exemple de jeu produit par Angelina}%
+		\caption{Exemple de jeu produit par ANGELINA}%
 	\end{center}
 \end{figure}
 
-Pour arriver à ce résultat, elle analyse la description, <<<DESCRIPTION>>>
+En revanche une des forces d'ANGELINA est qu'elle n'a pas besoin de fichier pour créer un environnement. C'est donc elle qui a la responsabilité de générer un environnement logique et jouable, dans lequel il est possible de se déplacer. Cela implique une analyse poussée des mécaniques du jeu pour définir les zones atteignables par le joueur, et éviter de créer une situation de « Softlock », dans laquelle le joueur ne peut plus progresser.
+
+\newpage
+Utilisée lors du Ludum Dare 28, qui avait pour thème « You Only Get One », il s'agit de la première IA à participer à une compétition de game designer. Le but du jeu qu'elle a créé pour cette occasion est de ramasser tous les bateaux présents dans le niveau, en évitant des êtres humanoïdes non identifiés patrouillant dans les salles, le tout dans une ambiance extrêmement glauque. La description du jeu a elle aussi été générée par ANGELINA, suivant un template. 
+
+Toutes les ressources utilisées pour générer le jeu ont été choisies par ANGELINA, qui après avoir analysé le thème, a décidé de faire un jeu à l'ambiance glauque.
+
+\begin{figure}[!h]%
+	\begin{center} 
+		\includegraphics[width=1.0\columnwidth]{images/angelinacreepy.jpg}%
+		\caption{Autre jeu produit par ANGELINA}%
+	\end{center}
+\end{figure}
+
+Lorsque le joueur a récupéré tous les bateaux, un message apparaît sur l'écran pour lui signifier sa victoire, et l'invite à appuyer sur « Echap » pour quitter le jeu, mais l'appui sur cette touche ne fait rien. 
+
+Bug innocent, ou début de quelque chose de plus inquiétant, le développeur d'ANGELINA n'a pas souhaité se prononcer.
+
+De là à dire que Skynet est déjà parmi nous, il n'y qu'un pas. 
 
 %------------------------------------------------
 
