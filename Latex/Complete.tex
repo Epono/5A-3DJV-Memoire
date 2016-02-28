@@ -31,6 +31,7 @@
 \usepackage[T1]{fontenc} % Required for accented characters
 \linespread{1.05} % Change line spacing here, Palatino benefits from a slight increase by default
 \usepackage{parskip} % add some space between paragraph 
+\usepackage{pdfpages}
  
 \makeatletter
 \renewcommand\@biblabel[1]{\textbf{#1.}} % Change the square brackets for each bibliography item from '[1]' to '1.'
@@ -48,6 +49,8 @@
 
 \begin{document}
 
+\includepdf[pages={1}]{images/pagedegarde.pdf}
+
 %----------------------------------------------------------------------------------------
 %	ESSAY BODY
 %----------------------------------------------------------------------------------------
@@ -58,9 +61,9 @@
 \subsection{Remerciements}
 Nous tenons à remercier :
 
-M. Alain LIORET, notre maître de mémoire, pour son soutien, sa passion, et pour nous avoir guidé dans notre travail. Il nous a donné de très bonnes pistes de recherches, ainsi que de bons conseils dans nos choix.
+M. Alain LIORET, notre maître de mémoire, pour son soutien, sa passion, et pour nous avoir guidé dans notre travail. Il nous a donné de très bonnes pistes de recherches, et a su nous conseiller dans nos choix.
 
-L’équipe pédagogique de l’ESGI, pour la qualité des cours dispensés à l’ESGI, qui nous ont donné la motivation nécessaire pour rédiger ce mémoire.
+L’équipe pédagogique de l’ESGI, pour la qualité de leurs cours, qui nous ont donné la motivation nécessaire pour rédiger ce mémoire.
 
 \newpage
 \subsection{Résumé}
@@ -88,18 +91,20 @@ In this thesis, we will study the state of the art of artificial intelligence ap
 		\hline
 		Mots clés & Key words\\
 		\hline		
-		Intelligence Artificielle&Artificial Intelligence\\
-		Jeu vidéo&Video game\\
-		Personnage Non Joueur (PNJ)&Non Playable Character (NPC)\\
-		Apprentissage Automatique&Machine Learning\\
-		Réseaux de neurones&Neural Networks\\
+		Intelligence Artificielle			&Artificial Intelligence\\
+		Jeu vidéo							&Video game\\
+		Personnage Non Joueur (PNJ)			&Non Playable Character (NPC)\\
+		Apprentissage Automatique			&Machine Learning\\
+		Réseaux de neurones					&Neural Networks\\
+		Dynamic Game Difficulty Balancing	&Dynamic Game Difficulty Balancing\\
+		General Video Game Playing			&General Video Game Playing\\
 		\hline
 	\end{tabular}
 \end{center}
 
 \newpage
 \section{Introduction}
-Depuis leur invention, les jeux vidéo n’ont eu de cesse de s’améliorer, que ce soit du point de vue du gameplay, du scénario ou du matériel. Mais un aspect qui est reste encore aujourd’hui en retrait (en plus du fait que lorsqu’elle est bien réalisée, elle est discrète), c’est l’intelligence artificielle.
+Depuis leur invention, les jeux vidéo n’ont eu de cesse de s’améliorer, que ce soit du point de vue du gameplay, du scénario ou du matériel. Mais un aspect qui est reste encore aujourd’hui en retrait (en plus du fait que lorsqu’elle est bien réalisée, elle est discrète), c’est l’intelligence artificielle\cite{rienavoir}.
  
 Un premier problème se situe au niveau de la crédibilité du comportement, empêchant le joueur de s'immerger totalement. C’est une problématique impactant principalement les jeux solos. En effet, le cœur des jeux vidéo se jouant seul est son scénario. Il est donc nécessaire que l’histoire ainsi que ses personnages paraissent le plus crédible possible aux yeux du joueur.
 
@@ -115,7 +120,7 @@ Dans les jeux vidéo, l’intelligence artificielle est utilisée pour donner vi
 
 Dans la plupart des jeux, les PNJ ont par exemple connaissance de l’ensemble de la carte et de ce qui s’y déroule. Dans les jeux de type FPS (« First Person Shooter »), les IA sont souvent dotées d’une visée parfaite. Par conséquent, il est très souvent nécessaire de brider ces capacités hors normes pour donner au joueur une sensation d’équité. 
 
-L’histoire de l’IA dans ce domaine remonte sans doute au début des années 1940s avec le jeu de stratégie pure Nim (publié en 1942). L’IA était alors capable de gagner, même contre des joueurs chevronnés !
+L’histoire de l’IA dans ce domaine remonte au début des années 1940 avec le jeu de stratégie pure Nim (publié en 1942). L’IA était alors capable de gagner, même contre des joueurs chevronnés !
 
 \begin{figure}[!h]%
 	\begin{center} 
@@ -141,7 +146,7 @@ Plus tard entre les années 1960 et le début des années 1970, les premiers jeu
 \subsection{Les premières IA pour le jeu vidéo}
 Dans les années 1970, les premiers jeux avec des modes 1 joueur apparaissent. Les plus remarquables sont Chasse au Wumpus et Star Trek en 1972 qui utilisaient des Stored Patterns\footnote{Les stored patterns sont des suites d’instructions répétées en boucle par l’agent. Hormis ce qui lui est dit de faire, il ne fera rien d’autre}  pour implémenter les IA des ennemis. L’utilisation des microprocesseurs a permis une augmentation du nombre de mouvement. 
 
-Dans la fin des années 1970 et jusqu’au début des années 1990 : c’est l’âge d’or des jeux d’arcade. Les IA se popularisent. Nombre de jeux (comme Space Invaders en 1978 et Galaxian en 1979) intégraient maintenant une IA plus complexe avec différents niveaux de difficulté et de nombreux modèles de mouvement. 
+De la fin des années 1970 et jusqu’au début des années 1990\cite{history}, c’est l’âge d’or des jeux d’arcade. Les IA se popularisent. Nombre de jeux (comme Space Invaders en 1978 et Galaxian en 1979) intègrent maintenant une IA plus complexe avec différents niveaux de difficulté et de nombreux modèles de mouvement. 
 
 \begin{itemize}
 	\item \textbf{Pacman} (1980) a introduit un pattern IA pour les jeux de labyrinthe, avec des personnalités distinctes pour chaque ennemi.
@@ -154,9 +159,9 @@ A partir des années 1990, l’émergence de nouveaux genres de jeux vidéo a co
 Les premiers jeux rencontraient de nombreux problèmes (Herzog Zwei en 1989 avec une recherche de chemin basée sur un automate fini à trois états, ainsi que Dune 2 en 1992 qui utilisaient de nombreuses « astuces »). 
 
 \newpage
-\subsubsection{Une IA évolutive}
+\subsection{Une IA évolutive}
 
-Longtemps délaissée au profit des graphismes des jeux vidéo, cette branche constitue maintenant une part importante du travail dans un jeu vidéo. Les joueurs réclament de plus en plus des IA au comportement humain afin d'accroître le sentiment d’immersion. Certains jeux sont réputés pour être des précurseurs en matière d’IA, en voici quelques exemples : 
+Longtemps délaissée au profit des graphismes des jeux vidéo, cette branche constitue maintenant une part importante du travail dans un jeu vidéo. Les joueurs réclament de plus en plus des IA au comportement humain afin d'accroître le sentiment d’immersion. Certains jeux sont réputés pour être des précurseurs en matière d’IA\cite{history}, en voici quelques exemples : 
 
 \begin{itemize}
 	\item \textbf{Creatures} (1998) : ce jeu est célèbre pour être le premier à utiliser l’apprentissage automatique lors d’une simulation interactive. A l’aide des réseaux de neurones, les créatures (appelées « Norms ») apprennent divers comportements. Ils peuvent ainsi interagir avec leur environnement. 
@@ -171,16 +176,19 @@ Longtemps délaissée au profit des graphismes des jeux vidéo, cette branche co
 \newpage
 \section{Les applications possibles prometteuses}
 
-Dans cette section, nous aborderons certaines des techniques les plus utilisées dans les jeux vidéo, ou qui 
+Dans cette section, nous aborderons certaines des techniques les plus utilisées dans les jeux vidéo, plus particulièrement dans le domaine de l’intelligence artificielle. Nous étudierons leurs caractéristiques ainsi que les avantages et les inconvénients de chacune plus particulièrement.
 
 \subsection{Le Machine Learning}
 
+Le Machine Learning est un domaine extrêmement vaste, aussi nous ne parlerons ici que des réseaux de neurones et des arbres de comportement.
+
 \subsubsection{Les réseaux de neurones}
 
-Un réseau de neurones artificiel (RNA) est un paradigme de traitement de l’information qui est inspiré de la façon par laquelle le système nerveux biologique, telle que le cerveau, traite l’information. L’élément clé de ce paradigme est la structure novatrice utilisée pour le système de traitement de l’information. Il est composé d’une grande quantité d’éléments de traitement grandement interconnectés (neurones), qui, en travaillant à l’unisson résolvent des problèmes spécifiques. Les RNA, comme les humains, apprennent par l’exemple. Un RNA est configuré pour une application particulière, comme la reconnaissance de motifs ou la classification de données, à travers une procédure d’apprentissage. Apprendre, dans le système biologique, implique des ajustements au niveau des connections synaptiques qui existent entre les neurones. C’est également vrai pour les RNA.
+Un réseau de neurones artificiel (RNA)\cite{rna} est un paradigme de traitement de l’information qui est inspiré de la façon par laquelle le système nerveux biologique, telle que le cerveau, traite l’information. L’élément clé de ce paradigme est la structure novatrice utilisée pour le système de traitement de l’information. Il est composé d’une grande quantité d’éléments de traitement grandement interconnectés (neurones), qui, en travaillant à l’unisson résolvent des problèmes spécifiques. Les RNA, comme les humains, apprennent par l’exemple. Un RNA est configuré pour une application particulière, comme la reconnaissance de motifs ou la classification de données, à travers une procédure d’apprentissage. Apprendre, dans le système biologique, implique des ajustements au niveau des connections synaptiques qui existent entre les neurones. C’est également vrai pour les RNA.
 
 La simulation de réseaux de neurones apparaît comme étant un développement récent. Cependant, ce domaine a été établi avant l’avènement des ordinateurs, et a survécu à au moins un revers majeur et à plusieurs époques. Le premier réseau de neurones artificiel fût produit en 1943 par le neurophysiologiste Warren McCulloch et le logicien Walter Pits. Mais la technologie disponible à cette époque n’a pas permis d’en faire grand-chose.
 
+\newpage
 Les réseaux de neurones, avec leur remarquable capacité de déduire un sens à des données compliquées ou imprécises, peuvent être utilisés pour extraire des motifs ou pour détecter des tendances qui sont trop complexes pour être notifiés par des humains ou bien même d’autres techniques informatiques. Un réseau de neurones entraîné peut être assimilé à un « expert » dans la catégorie d’information qu’il analyse. Cet expert peut être utilisé pour fournir des prévisions en lui donnant de nouvelles situations et répondre à des questions du type « Que se passerait-il si … ? ».
 
 D’autres avantages incluent :
@@ -209,7 +217,7 @@ Ce type simpliste de réseau de neurones est intéressant car les unités caché
 
 On peut distinguer les architectures monocouche ou multicouche. Les organisations monocouches, dans lesquelles toutes les unités sont connectées aux autres, constituent le cas le plus général et un plus grand potentiel de puissance de calcul que les organisations multicouches structurées par hiérarchie. Dans les réseaux multicouches, les unités sont numérotées par couche au lieu de suivre une numérotation globale.
 
-Il existe plusieurs stratégies d’apprentissage pour un réseau de neurones artificiel :
+Il existe plusieurs stratégies d’apprentissage pour un réseau de neurones artificiel\cite{shiffman2012nature} :
 \begin{itemize}
 	\item \textbf{L’apprentissage supervisé} : Cette stratégie implique un professeur plus intelligent que le réseau lui-même, qui servira de superviseur pour l’apprentissage du réseau de neurones. Par exemple, dans le cas de la reconnaissance faciale, le professeur connaît déjà les noms des personnes qu’il montre au réseau de neurones. Il peut ainsi comparer les réponses données par le réseau et déterminer si des ajustements sont à faire.
 	
@@ -249,7 +257,7 @@ Le XOR est l’équivalent du OR et du NOT AND. En d’autres termes A XOR B vau
 
 \begin{figure}[!h]%
 	\begin{center} 
-		\includegraphics[width=0.60\columnwidth]{images/xor.jpg}%
+		\includegraphics[width=0.30\columnwidth]{images/xor.jpg}%
 		\caption{Tables de vérité XOR}%
 	\end{center}
 \end{figure}
@@ -258,6 +266,7 @@ Le problème représenté ci-dessus n’est pas séparable linéairement. En eff
 
 Nous venons de voir qu’il était impossible pour un perceptron de résoudre le problème du XOR. Mais il n’est pas impossible pour un réseau de deux perceptrons de résoudre le XOR. Si un perceptron résout le OR et qu’un autre se charge du NOT AND alors les deux perceptrons combinés peuvent venir à bout du XOR.
 
+\newpage
 \begin{figure}[!h]%
 	\begin{center} 
 		\includegraphics[width=0.60\columnwidth]{images/perceptronmulticouche.jpg}%
@@ -269,8 +278,62 @@ Entraîner ce genre de perceptrons (Figure 7) est beaucoup plus compliqué. Avec
 
 Cependant il existe une solution pour optimiser les poids d’un réseau de neurones multicouches qui est connue sous le nom de rétropropagation du gradient (ou backpropagation en anglais). La sortie du réseau est générée de la même manière qu’un perceptron. La différence ici est que les données passent par une couche supplémentaire de neurones avant d’atteindre la sortie. Entraîner le réseau (c’est-à-dire ajuster les poids) implique aussi de prendre en compte l’erreur (la différence entre le résultat désiré et la supposition). L’erreur, néanmoins doit être retransmise à travers tout le réseau. La dernière erreur ajuste en fin de compte le poids de toutes les connexions.
 
+Actuellement il est courant d’utiliser les réseaux de neurones dans le domaine de l’intelligence artificielle. Mais qu’en est-il de l’intelligence artificielle (IA) dans les jeux vidéo ?
+
 \newpage
-\subsubsection{Les arbres de décision avec l’apprentissage par renforcement}
+Il existe un logiciel implémentant une méthode de neuro évolution appelé NeuroEvolution of Augmenting Topologies (NEAT). Ce logiciel peut faire évoluer des réseaux de neurones d’une complexité sans limite depuis un état de départ. Il est donc possible, à l’aide d’une des implémentations faites dans un langage de programmation (tel que le C++ ou le Java), d’intégrer cette méthode dans un moteur de jeu vidéo.
+
+C’est le cas de NERO (Neuro-Evolving Robotic Operatives) qui utilise l’implémentation C++ de la méthode NEAT\cite{stanley2005evolving}. Ce jeu permet de jouer avec des agents intelligents adaptables par le joueur lui-même, qui doit faire évoluer sa propre armée de robots, simplement en contrôlant les récompenses associés à différents comportement (éviter l'ennemi, se regrouper, etc ...). Ensuite, les joueurs peuvent faire combattre leurs armées contre celles d'autres joueurs lors de compétitions en ligne.
+
+\begin{figure}[!h]%
+	\begin{center} 
+		\includegraphics[width=0.60\columnwidth]{images/nero.jpg}%
+		\caption{Combat daUn perceptron multicouche}%
+	\end{center}
+\end{figure}
+
+\newpage
+\subsubsection{Les arbres de comportement}
+
+Dans le domaine des jeux vidéo, il est important de développer des agents dotés d’une intelligence artificielle qui puissent interagir avec l’environnement ou même avec d’autres agents. Dans les jeux un agent peut être un objet, une créature, une personne ou même un système agissant dans le monde virtuel. Suivant le genre, les mécaniques ou le but du jeu, les agents virtuels peuvent être bénéfique pour plusieurs raisons, telles que :
+
+\begin{itemize}
+	\item Fournir des ennemis et des alliés au joueur, et donc créer du contenu au jeu.
+	\item Créer des entités intelligentes qui viennent compléter le monde virtuel, rendant ainsi l’expérience du joueur plus immersive.
+	\item Créer des personnages capables de capter l’empathie du joueur.
+\end{itemize}
+
+En général les agents virtuels peuvent interagir avec les humains (sous forme d’avatar dans le jeu) ou avec d’autres agents artificiels. Les agents autonomes intelligents dans les jeux sont appelés PNJ (Personnage Non Joueur) et possèdent des organes sensoriels ou des mécanismes d’actions particuliers à leur but mais aussi à l’environnement qui les entoure. Un PNJ peut, par exemple, être un vendeur de potion humain restant figé dans la ville, attendant que le joueur vienne lui cliquer dessus, ou alors incarner le compagnon du joueur principal, le suivant ainsi durant toutes ses aventures.
+
+Pour développer des agents intelligents, il est nécessaire de construire un vaste répertoire de comportements. Un comportement implique le contrôle de plusieurs actions à travers le temps. Par exemple, imaginez un jeu d’action où les PNJ ont un comportement d’auto-protection. Pour accomplir ce comportement, le PNJ doit vérifier s’il est en danger (par exemple, si sa vie est basse), si c’est confirmé, le PNJ devra alors s’éloigner du joueur. Le nombre de comportements qu’un agent peut utiliser indique le nombre de situations différentes qu’il peut reconnaître et dont il peut agir en conséquence.
+
+Il est aussi important que la méthode utiliser pour contrôler les agents permette une coordination efficace des comportements, afin qu’un agent puisse accomplir son but efficacement, c’est-à-diresans effectuer d’actions aléatoires, inutiles ou stupides (dans un combat, un PNJ ne peut pas s’arrêter pour vendre des objets).
+
+Les agents intelligents possédant des larges répertoires de comportement efficace rendent l’expérience interactive avec l’humain plus intéressante. De plus, dans les jeux vidéo, ces agents ne frustrent pas le joueur, lui permettant une meilleure immersion dans le jeu. Cependant ces résultats ont un coup en terme de complexité tels que\cite{bt} :
+
+\begin{itemize}
+	\item \textbf{La vitesse} : Beaucoup de comportements implique une forte consommation de la mémoire pour les conserver et une forte utilisation du processeur pour les exécuter. Cependant dans les jeux, rare est la place faite à la partie IA dans la répartition de l’utilisation mémoire/processeur, bien souvent au profit du rendu graphique.
+	\item \textbf{La transparence et la fiabilité} : Les développeurs doivent avoir un contrôle total sur les actions de leurs agents. Il ou elle doit être capable de déboguer et de savoir, de manière relativement simple, l’état interne de l’agent, en étant capable de prédire approximativement ses prochaines actions. Ce besoin est particulièrement important pour des raisons de sécurité. Perdre le contrôle de ce que l’agent fait et du moment où il doit le faire peut causer des soucis. En effet, des agents sans contrôle peuvent ruiner l’expérience de jeu. Par conséquent, la quantité de comportements peut rendre le développement plus compliqué et résulter en un système peu fiable.
+\end{itemize}
+
+\begin{figure}[!h]%
+	\begin{center} 
+		\includegraphics[width=0.60\columnwidth]{images/fsm.jpg}%
+		\caption{Une machine à états finis}%
+	\end{center}
+\end{figure}
+
+\newpage
+
+L’arbre de comportement est venu remplacer la machine à états finis dans le domaine du jeu vidéo en apportant plusieurs avantages\cite{bt} :
+
+\begin{itemize}
+	\item \textbf{La maintenabilité} : les transitions de l’arbre de décision sont définies dans sa structure, et non par les conditions à l’intérieur des états. Grâce à cela, les nœuds peuvent être conçus indépendamment les uns des autres, ainsi, lorsqu’on ajoute ou retire de nouveaux nœuds (ou même des sous arbres) dans un petite partie de l’arbre, il n’est pas nécessaire de changer les autres parties du modèle.
+	\item \textbf{La « scalabilité »}: Lorsqu’un arbre de comportement possède beaucoup de nœuds, il est possible de le décomposer en petits sous arbres, préservant ainsi la lisibilité du modèle graphique.
+	\item \textbf{La réutilisabilité} : Grâce à l’indépendance des nœuds dans l’arbre de comportement, les sous arbres sont eux aussi indépendants. Cela permet la réutilisation des nœuds ou des sous arbres à travers d’autres arbres ou projets.
+	\item \textbf{La spécialisation} : Bien que les nœuds de l’arbre soient indépendants, ils restent reliés à cause de la structure de l’arbre. Ceci permet au concepteur de construire des sous arbres spécifiques à une tâche sans perdre la flexibilité de son modèle.
+	\item \textbf{La parallélisation} : Les arbres de comportements peuvent spécifier des nœuds parallèles qui exécuteront leurs enfants au même instant sans perdre le contrôle du modèle d’exécution. Cela est possible car la parallélisation est contenue localement au nœud parallèle.
+\end{itemize}
 
 \newpage
 \subsection{Dynamic Game Difficulty Balancing}
@@ -279,15 +342,16 @@ Dans beaucoup de jeux d’aujourd’hui, afin de toucher un public plus large al
 
 Même s’il est possible dans certains jeux de modifier la difficulté en cours de jeu, peu de joueurs l’utilisent, par fierté, et finissent soit par se débloquer après une session de jeu peu agréable, soit par abandonner devant un jeu qu’ils trouvent injuste.
 
-C’est pour résoudre ce problème que des jeux utilisent le Dynamic Game Difficulty Balancing. C’est une technique qui permet de changer dynamiquement certains éléments (comportement de PNJ, paramètres, etc ...) au cours du jeu, pour mieux s’adapter au niveau de compétence du joueur, ou même (plus rarement) à son style de jeu. Son but est donc de moduler la difficulté, afin que le jeu représente un challenge intéressant du début à la fin et de garder le joueur dans ce que l'on appelle le flow (état dans lequel le joueur est concentré sur le jeu et ne voit pas le temps passer).
+C’est pour résoudre ce problème que des jeux utilisent le Dynamic Game Difficulty Balancing\cite{hunicke2005case}. C’est une technique qui permet de changer dynamiquement certains éléments (comportement de PNJ, paramètres, etc ...) au cours du jeu, pour mieux s’adapter au niveau de compétence du joueur, ou même (plus rarement) à son style de jeu. Son but est donc de moduler la difficulté, afin que le jeu représente un challenge intéressant du début à la fin et de garder le joueur dans ce que l'on appelle le flow (état dans lequel le joueur est concentré sur le jeu et ne voit pas le temps passer).
 
 \begin{figure}[!h]%
 	\begin{center} 
 		\includegraphics[width=0.60\columnwidth]{images/flow.png}%
-		\caption{Flow}%
+		\caption{Représentation de la zone de flow}%
 	\end{center}
 \end{figure}
 
+\newpage
 S’il existe presque autant d’approches différentes à cette technique que de jeux qui l’utilisent, il faut néanmoins dans tous les cas régulièrement déterminer et analyser les performances du joueur au moyen d’une fonction heuristique, qui fournit rapidement un résultat concret, même si pas optimal (très utilisé pour les jeux, dans lesquels les performances sont critiques).
 
 De plus, des études ont montré qu’une fonction heuristique déterminée à l’aide d’un réseau de neurones artificiels (ANN) donne de meilleurs résultats qu’une fonction heuristique faite par des humains.
@@ -324,8 +388,6 @@ Dans Resident Evil 5 (2009), il est possible de sélectionner une difficulté de
 	\item Le comportement et panel d'attaque des ennemis.
 \end{itemize}
 
-Ici, la difficulté choisie au départ sert de bornes pour la difficulté dynamique. Ainsi, si le joueur choisit la difficulté minimale, même s’il se débrouille très bien par la suite, la difficulté dynamique ne pourra pas dépasser un certain seuil. Et inversement si le joueur choisit une difficulté initiale élevée, et que par la suite ne fait que mourir, la difficulté ne pourra pas baisser en dessous d’un certain niveau.
-
 Le tableau ci-dessous indique les notes associés aux différentes actions du joueur :
 
 \begin{center} 
@@ -347,10 +409,12 @@ Le tableau ci-dessous indique les notes associés aux différentes actions du jo
 	\end{tabular}
 \end{center}
 
+Ici, la difficulté choisie au départ sert de bornes pour la difficulté dynamique. Ainsi, si le joueur choisit la difficulté minimale, même s’il se débrouille très bien par la suite, la difficulté dynamique ne pourra pas dépasser un certain seuil. Et inversement si le joueur choisit une difficulté initiale élevée, et que par la suite ne fait que mourir, la difficulté ne pourra pas baisser en dessous d’un certain niveau.
+
 \newpage
 \subsubsection{La série Mario Kart : objets et PNJ}
 
-Mario Kart est un jeu de course dans lequel le joueur peut obtenir des objets pour l'aider en roulant sur un cube. Ces cubes donnent un objet aléatoire, mais dépendant de la position du joueur dans la course. Ainsi, si le joueur est bien placé, il aura des chances augmentées de recevoir des objets considérées « faibles », comme une banane ou une carapace verte, tandis que si le joueur se retrouve à la fin du classement, ce sont ses chances de recevoir des objets considérées « fortes », comme la fameuse tortue bleue qui augmentent.
+Mario Kart est un jeu de course dans lequel le joueur peut obtenir des objets pour l'aider en roulant sur un cube. Ces cubes donnent un objet aléatoire, mais dépendant de la position du joueur dans la course. Ainsi, si le joueur est bien placé, il aura des chances augmentées de recevoir des objets considérées « faibles », comme une banane ou une carapace verte, tandis que si le joueur se retrouve à la fin du classement, ce sont ses chances de recevoir des objets considérées « forts », comme la fameuse tortue bleue qui augmentent.
 
  Le tableau ci-dessous représente les probabilités d'obtenir un objet en fonction de la position dans la course dans Mario Kart 64.
 
@@ -386,7 +450,7 @@ Malheureusement cette dernière technique provoque un effet nommé « rubber ban
 
 Le meilleur exemple actuel (connu) pour ce type d’IA se trouve du côté de Valve, et plus précisément dans leur survival horror FPS, Left 4 Dead (2008). Dans celui ci, un groupe de quatre joueurs doit se frayer un chemin dans un niveau infesté de zombies en tout genre.
 
-Cette intelligence artificielle, surnommée « \textbf{\textit{AI Director}} » (que nous appellerons simplement par la suite « \textit{Director} ») analyse constamment les performances des joueurs afin de proposer une expérience plus intéressante. Mais il ne se contente pas d’analyser les performances individuelles, il analyse également la performance collective du groupe.
+Cette intelligence artificielle, surnommée « \textbf{\textit{AI Director}} »\cite{aidirector} (que nous appellerons simplement par la suite « \textit{Director} ») analyse constamment les performances des joueurs afin de proposer une expérience plus intéressante. Mais il ne se contente pas d’analyser les performances individuelles, il analyse également la performance collective du groupe.
 
 \begin{figure}[!h]%
 	\begin{center} 
@@ -413,7 +477,7 @@ Dans la figure ci-dessus, qui représente le parcours d'un niveau, la barre du h
 \newpage
 De plus, le \textit{Director} ne se contente pas de modifier les éléments du gameplay, c’est également lui qui gère les répliques lancées par les personnages, modifie dynamiquement la musique pour s’adapter au moment, ainsi que la position des objets récupérables par les joueurs. Il est aussi responsable de certains effets sonores et visuels, qu’il peut décider d’ajouter pour amplifier la tension.
 
-le \textit{Director} de Left 4 Dead 2 est même capable de modifier dynamiquement l’agencement du niveau et donc de modifier le chemin que les joueurs doivent suivre.
+Le \textit{Director} de Left 4 Dead 2 est même capable de modifier dynamiquement l’agencement du niveau et donc de modifier le chemin que les joueurs doivent suivre.
 
 Malheureusement, son existence et son fonctionnement étant connu par les joueurs, ceux-ci n’hésitent pas à en tirer profit pour rendre certaines parties du jeu plus simple en faisant exprès de mal jouer pour réduire la difficulté à certains moments critiques du jeu.
 
@@ -428,11 +492,15 @@ Malheureusement, son existence et son fonctionnement étant connu par les joueur
 %\subsection{Cheating / Procedural / Data mining}
 
 \newpage
-\subsection{Des jeux par les IA, pour les IA}
+\subsection{General Video Game Playing, l'IA qui apprend à jouer}
 
 Bientôt, il n’y aura plus du tout besoin d’humains dans la boucle de création et consommation de jeu.
 
-En effet, la prochaine IA dont nous allons parler est capable d’apprendre à joueur à des jeux, tandis que la suivante, très jeune, est capable de développer des jeux (simples) complets.
+Si les IA capables de jouer à des jeux de société existent depuis longtemps, celles-ci étaient limitées et ne pouvaient jouer qu’à un seul jeu. Ce n’est pas le cas des IA suivant la technique de GGP (\textbf{G}eneral \textbf{G}ame \textbf{P}laying), et son homologue pour les jeux vidéo, la technique de GVGP\cite{levine_et_al:DFU:2013:4337} (\textbf{G}eneral \textbf{V}ideo \textbf{G}ame \textbf{P}laying).
+
+Grâce à ce type d'IA, il sera bientôt possible de réduire la quantité de tests à effectuer par des humains sur le jeu pour découvrir les bugs qui sont normalement découverts par des utilisateurs humains. Par exemple, détecter les failles de gameplay avant les joueurs pour éviter les abus, ou vérifier si un monde généré procéduralement est jouable par des humains.
+
+Une autre application, à plus long terme, serait d'éviter aux développeurs d'avoir à adapter, voir réécrire, une IA pour chaque jeu. En effet, une IA suffisamment autonome avec un large champ d'apprentissage devrait être capable d'apprendre seule à jouer à n'importe quel type de jeu, dans le rôle de n'importe quel PNJ, réduisant considérablement le temps de développement d'un jeu.
 
 \begin{figure}[!h]%
 	\begin{center} 
@@ -442,30 +510,25 @@ En effet, la prochaine IA dont nous allons parler est capable d’apprendre à j
 \end{figure}
 
 \newpage
-\subsubsection{General Video Game Playing, l'IA qui apprend à jouer}
-
-Si les IA capables de jouer à des jeux de société existent depuis longtemps, celles-ci étaient limitées et ne pouvaient jouer qu’à un seul jeu. Ce n’est pas le cas des IA suivant la technique de GGP (\textbf{G}eneral \textbf{G}ame \textbf{P}laying), et son homologue pour les jeux vidéo, la technique de GVGP (\textbf{G}eneral \textbf{V}ideo \textbf{G}ame \textbf{P}laying).
-
-C’est un domaine qui a gagné en popularité ces dernières années, notamment grâce à une IA dotée d’un système de GVGP qui a gagné le prix du public de la compétition annuelle de GGP organisée par l’AAAI (\textbf{A}ssociation for the \textbf{A}dvancement of \textbf{A}rticifial \textbf{I}ntelligence).
+Ce domaine a gagné en popularité ces dernières années, notamment grâce à une IA de GVGP qui a gagné le prix du public de la compétition annuelle 2015\cite{mariolives} de GGP organisée par l’AAAI (\textbf{A}ssociation for the \textbf{A}dvancement of \textbf{A}rticifial \textbf{I}ntelligence).
 
 Cette IA est notamment capable d’apprendre à jouer à un niveau de Mario, un jeu de plateforme 2D, de s’adapter aux différents obstacles qui le composent, et même d’apprendre certaines mécaniques (sauter sur un Koopa pour le tuer).
-
-Il est également possible d'interagir avec cette IA et de lui poser des questions ou de lui donner des informations sur le jeu.
 
 \begin{figure}[!h]%
 	\begin{center} 
 		\includegraphics[width=0.60\columnwidth]{images/mario.jpg}%
-		\caption{Chemin }%
+		\caption{Prédiction de déplacement de l'IA}%
 	\end{center}
 \end{figure}
 
-%https://en.wikipedia.org/wiki/General_video_game_playing
-%https://en.wikipedia.org/wiki/Artificial_intelligence_(video_games)#In_modern_video_games
-%https://www.youtube.com/watch?v=AplG6KnOr2Q
+Un autre point intéréssant de cette IA est qu'elle est (relativement) consciente d'exister. Elle dispose ainsi de plusieurs émotions (la peur, la satisfaction, la curiosité et la faim) qui conditionnent son comportement. Par exemple, si son niveau de curiosité est élevé, elle essayera d'interagir avec les éléments de son environnement, tandis que ramasser des pièces augmentera sa satisfaction. Il est également possible d'interagir avec cette IA et de lui poser des questions ou de lui donner des informations sur le jeu. 
 
 \newpage
-\subsubsection{Angelina, l’IA qui développe des jeux}
+\subsection{Des jeux par les IA}
 
+Comme nous l'avons vu dans la partie précédente, l'époque où il n'y avait que les humains qui jouaient aux jeux vidéo est révolue, dorénavant, même les IA apprennent à y jouer.
+
+Mais une autre époque pourrait également bientôt se finir. En effet, depuis quelques années, d'autres projets d'IA ont vu le jour, non pas pour jouer aux jeux vidéo, mais pour les créer. 
 
 \begin{figure}[!h]%
 	\begin{center} 
@@ -474,18 +537,76 @@ Il est également possible d'interagir avec cette IA et de lui poser des questio
 	\end{center}
 \end{figure}
 
-Angelina est une IA qui, à partir d’une description en langage naturel, peut générer des jeux de plateforme 2D, avec une ambiance, des graphismes et un gameplay qui respectent (dans une certaine mesure) la description fournie.
+\newpage
+\subsubsection{Video Game Description Language}
 
-C’est un sujet de recherche développé par Michael Cook, un chercheur britannique à l’université de Falmouth.
+Le \textbf{V}ideo \textbf{G}ame \textbf{D}escription \textbf{L}anguage\cite{schaul2013video} (VGDL) est un langage imaginé et implémenté par Tom Schaul, qui permet de générer un jeu vidéo en 2D en quelques dizaines de lignes de codes.
+
+Dans un premier temps, il faut fournir au programme un fichier texte, divisé en quatre sections, chacune décrivant un aspect du jeu :
+
+\begin{itemize}
+	\item \textbf{LevelMapping} : dans cette section est expliquée comment transformer le fichier de description de niveau en niveau.
+	\item \textbf{SpriteSet} : dans cette section sont définies toutes les entités visibles que le jeu utilisera (supporte l'héritage).
+	\item \textbf{InteractionSet} : dans cette section sont définies les actions à effectuer lorsque deux sprites entrent en collision.
+	\item \textbf{TerminationSet} : dans cette section sont définies les conditions de victoire ou de défaite.
+\end{itemize}
+
+\begin{figure}[!h]%
+	\begin{center} 
+		\includegraphics[width=0.60\columnwidth]{images/vgdlgame.jpg}%
+		\caption{Example de code pour produire un RPG classique}%
+	\end{center}
+\end{figure}
+
+\newpage
+Il faut ensuite lui fournir un autre fichier texte décrivant le niveau, dans lequel chaque caractère représente une entité.
+
+\begin{figure}[!h]%
+	\begin{center} 
+		\includegraphics[width=0.60\columnwidth]{images/vgdllevel.jpg}%
+		\caption{Exemple de texte pour produire un niveau}%
+	\end{center}
+\end{figure}
+
+Le but premier de ce langage est de permettre la génération rapide d'une multitude de jeux, qui eux serviront à tester différentes techniques d'apprentissage, pour valider leur généralité.
+
+Le langage étant très jeune, il manque encore de fonctionnalités, mais son développeur a pour objectif d'ajouter le support du multi-joueur, d'améliorer le système de récompense pour faciliter le Reinforcement Learning, ou encore d'ajouter des ressources (vie, mana, etc ...) aux entités.
+
+Malgré cette jeunesse, le langage a déjà permis de reproduire des versions simplifiées de jeux classiques, comme Space Invaders (1978), Pac-Man (1980) ou encore Super Mario Bros (1985). 
+
+\newpage
+\subsubsection{ANGELINA}
+
+ANGELINA\cite{cook2014ludus} (\textbf{A} \textbf{N}ovel \textbf{G}ame-\textbf{E}volving \textbf{L}abrat \textbf{I}’ve \textbf{N}amed \textbf{A}NGELINA) est une IA développée par Michael Cook, un chercheur britannique à l’université de Falmouth. Elle peut générer des jeux, avec une ambiance, des graphismes et un gameplay qui respectent (dans une certaine mesure) la description fournie.
+
+Comme pour le VGDL, il faut lui fournir un fichier texte (en YAML, un format de représentation de données avec une grande lisibilité), pour décrire les différentes entités qui composeront le jeu.
 
 \begin{figure}[!h]%
 	\begin{center} 
 		\includegraphics[width=0.60\columnwidth]{images/angelina.png}%
-		\caption{Exemple de jeu produit par Angelina}%
+		\caption{Exemple de jeu produit par ANGELINA}%
 	\end{center}
 \end{figure}
 
-Pour arriver à ce résultat, elle analyse la description, <<<DESCRIPTION>>>
+En revanche une des forces d'ANGELINA est qu'elle n'a pas besoin de fichier pour créer un environnement. C'est donc elle qui a la responsabilité de générer un environnement logique, dans lequel il est possible de se déplacer. Cela implique une analyse poussée des mécaniques du jeu pour définir les zones atteignables par le joueur, et éviter de créer une situation de « Softlock », dans laquelle le joueur ne peut plus progresser.
+
+\newpage
+Utilisée lors du Ludum Dare 28, qui avait pour thème « You Only Get One », il s'agit de la première IA à participer à une compétition de game designer. Le but du jeu qu'elle a créé pour cette occasion est de ramasser tous les bateaux présents dans le niveau, en évitant des êtres humanoïdes non identifiés patrouillant dans les salles, le tout dans une ambiance extrêmement glauque. La description du jeu a elle aussi été générée par ANGELINA, suivant un template. 
+
+Toutes les ressources utilisées pour générer le jeu ont été choisies par ANGELINA, qui après avoir analysé le thème, a décidé de faire un jeu à l'ambiance glauque.
+
+\begin{figure}[!h]%
+	\begin{center} 
+		\includegraphics[width=1.0\columnwidth]{images/angelinacreepy.jpg}%
+		\caption{Autre jeu produit par ANGELINA}%
+	\end{center}
+\end{figure}
+
+Lorsque le joueur a récupéré tous les bateaux, un message apparaît sur l'écran pour lui signifier sa victoire, et l'invite à appuyer sur « Echap » pour quitter le jeu, mais l'appui sur cette touche ne fait rien. 
+
+Bug innocent, ou début de quelque chose de plus inquiétant, le développeur d'ANGELINA n'a pas souhaité se prononcer.
+
+De là à dire que Skynet est déjà parmi nous, il n'y qu'un pas. 
 
 %------------------------------------------------
 
@@ -514,7 +635,7 @@ Dans cette partie, nous parlerons de l’intelligence artificielle qui n’est p
 
 Lorsqu’un PNJ répète sans cesse le même dialogue, le joueur est ramené à la réalité. Quand un PNJ rencontre un problème de recherche de chemin et fonce obstinément dans un mur ou n’arrive pas à se déplacer d’un point à un autre, le joueur est ramené, brutalement, à la réalité. 
 
-Ces actions, souvent sans le vouloir, cassent le quatrième mur, et mettent fin à ce que l’on appelle la Suspension Consentie de l’Incrédulité (aussi connue sous le nom de Suspension of disbelief en anglais). Il s’agit d’une sorte de contrat que le joueur signe avec l’œuvre de fiction (que ce soit un jeu, un film, un livre), dans lequel le joueur accepte de mettre de côté son scepticisme le temps de la consultation de l’œuvre en question. 
+Ces actions, souvent sans le vouloir, cassent le quatrième mur, et mettent fin à ce que l’on appelle la Suspension Consentie de l’Incrédulité\cite{scdli} (aussi connue sous le nom de Suspension of disbelief en anglais). Il s’agit d’une sorte de contrat que le joueur signe avec l’œuvre de fiction (que ce soit un jeu, un film, un livre), dans lequel le joueur accepte de mettre de côté son scepticisme le temps de la consultation de l’œuvre en question. 
 
 \begin{figure}[!h]%
 	\begin{center} 
@@ -523,6 +644,7 @@ Ces actions, souvent sans le vouloir, cassent le quatrième mur, et mettent fin 
 	\end{center}
 \end{figure}
 
+\newpage
 Il peut ainsi s’immerger dans un univers avec des éléments imaginaires, pour peu que ceux-ci restent crédibles, et que les règles qui régissent l’œuvre restent constantes.
 Lorsque ce contrat est rompu (par définition, il ne peut être rompu que par l’œuvre de fiction), il est difficile de faire replonger un joueur dans l’univers du jeu, avec lequel il restera toujours un peu distant, et cela renforce le solipsisme du joueur.
 
@@ -570,12 +692,12 @@ Toutefois, si le réalisme des PNJ androïdes n’arrive pas à la hauteur des a
 \newpage
 \subsubsection{Vallée dérangeante}
 
-La vallée dérangeante est une théorie selon laquelle plus une créature androïde ressemble à un être humain, plus on remarque ses imperfections, même minimes, et plus elles nous dérangent. Cette théorie a été publiée en 1970 par le roboticien japonais Masahiro Mori, dans le cadre de ses recherches sur les réponses émotionnelles des robots.
+La vallée dérangeante\cite{vallee} est une théorie selon laquelle plus une créature androïde ressemble à un être humain, plus on remarque ses imperfections, même minimes, et plus elles nous dérangent. Cette théorie a été publiée en 1970 par le roboticien japonais Masahiro Mori, dans le cadre de ses recherches sur les réponses émotionnelles des robots.
 
 \begin{figure}[!h]%
 	\begin{center} 
 		\includegraphics[width=0.60\columnwidth]{images/uncannyValley.png}%
-		\caption{Vallée dérangeante}%
+		\caption{Représentation de la vallée dérangeante}%
 	\end{center}
 \end{figure}
 
@@ -614,7 +736,7 @@ Si dans les jeux, cet aspect peut presque passer inaperçu et n'est pas très pr
 
 Fable est un jeu sorti en 2004, et innovant pour son époque, de par la liberté qu’il laisse au joueur. En effet, le joueur peut se marier, divorcer, boire, jouer aux cartes, acheter, louer et revendre des maisons, se tourner vers les forces obscures ou le bien, massacrer des innocents, gardes ou bandits, entre autres activités diverses et variées.
 
-Ce qui suit est une anecdote tirée du blog d’un des développeurs du jeu, traduite, adaptée et commentée.
+Ce qui suit est une anecdote tirée du blog d’un des développeurs du jeu\cite{fable}, traduite, adaptée et commentée.
 
 %Les développeurs se sont également imposés deux règles qu’ils jugeaient vitales que le jeu suive, sans quoi il ne respecterait pas leur vision :
 %
@@ -691,7 +813,7 @@ ELIZA, créé en 1966, par Joseph Weizenbaum, MIT, fut le premier agent conversa
 
 En 1997, Rollo Carpenter, un informaticien britannique, crée Jabberwacky. C’est lui aussi un agent conversationnel, mais au lieu d’avoir un comportement fixé à l'avance, celui-ci est capable d’apprendre. En effet, il stocke dans une base de données toutes les conversations des utilisateurs, et s’en sert pour choisir une réponse à la question posée par l’utilisateur.
 
-Ce n’est que onze ans plus tard, en 2008 que Rollo Carpenter met en ligne Cleverbot, descendant spirituel de Jabberwacky. Celui-ci dispose également d’une base de données des conversations avec les utilisateurs parmi lesquelles il va chercher la réponse la plus appropriée, mais a également une notion de contexte, grâce à un système de mémoire à court terme, qui donne un poids plus important aux conversations récentes.
+Ce n’est que onze ans plus tard, en 2008 que Rollo Carpenter met en ligne Cleverbot\cite{carpenter2011cleverbot}, descendant spirituel de Jabberwacky. Celui-ci dispose également d’une base de données des conversations avec les utilisateurs parmi lesquelles il va chercher la réponse la plus appropriée, mais a également une notion de contexte, grâce à un système de mémoire à court terme, qui donne un poids plus important aux conversations récentes.
 
 %\newpage
 %\begin{figure}[!h]%
@@ -722,16 +844,27 @@ Ainsi, même si les réponses de Evie sont de plus en plus naturelles, le joueur
 
 \newpage
 \section{Apports du mémoire}
-Lors de nos recherches pour écrire ce mémoire, nous avons non seulement approfondi énormément nos connaissances sur beaucoup de sujets qui touchent à l'intelligence artificielle, notamment le machine learning, mais nous avons également découvert plusieurs applications dont nous n'avions aucune idée de l'existence, comme Angelina, l'IA qui développe des jeux.
 
-Cependant, il s'agit d'un sujet tellement vaste que n'avons fait qu'en gratter la surface.
+Lors de nos recherches pour écrire ce mémoire, nous avons non seulement approfondi énormément nos connaissances sur beaucoup de sujets qui touchent à l'intelligence artificielle, notamment le machine learning, cependant, il s'agit d'un sujet tellement vaste que nous n'avons pas pu aborder toutes les approches qui existent.
+
+Nous avons également découvert plusieurs applications dont nous n'avions aucune idée de l'existence, comme Angelina, l'IA qui développe des jeux.
+
+Lors du développement de nos prochains jeux, nous aurons ainsi une meilleure idée de ce qu'il est possible d'utiliser puisque nous nous serons déjà familiarisé avec une grande partie des techniques qui sont utilisées dans le monde du jeu vidéo, mais également avec des techniques naissantes.
 
 %------------------------------------------------
 
 \newpage
 \section{Conclusion}
 
+Ainsi nous avons vu qu'à ses débuts, l'intelligence artificielle dans les jeux vidéo était très limitée, et qu'on ne pouvait même pas vraiment parler d'intelligence, mais plutôt de « réaction programmée ». Mais très vite, des jeux comme F.E.A.R. ou Black \& White vont apparaître et montrer de nouvelles techniques et applications pour le jeu vidéo.
 
+Nous avons vu que les applications pour l'IA dans le monde du jeu vidéo étaient nombreuses, avec notamment le Machine Learning, domaine extrêmement vaste et prometteur pour les jeux vidéo, encore jeune mais de plus en plus utilisé, en nous attardant seulement sur les réseaux de neurones (utilisées dans rtNEAT), et les arbres de comportement, très couramment utilisées pour des PNJ avec un comportement fixé à l'avance.
+
+Mais aussi, le Dynamic Game Difficulty Balancing, qui permet d'offrir une expérience plus adaptée, et parfois plus personnalisée, au joueur, en modifiant à la volée certains éléments du jeu.
+Sans oublier les IA capables d'apprendre à jouer, tandis que d'autres, à partir d'une description de quelques dizaines de lignes, peuvent créer un jeu.
+
+Enfin, nous avons aussi vu une autre utilité à l'intelligence artificielle, celle de garder le joueur immergé dans l'univers du jeu. Pour cela, il est vital de ne pas rompre la suspension consentie de l'incrédulité de joueur et d'éviter de lui faire ressentir tout sentiment de solipsisme. 
+Nous avons également remarqué que l'apophénie peut être un bon moyen d'améliorer l'immersion du joueur, tandis que la sérendipité permet d'augmenter considérablement la durée de vie du jeu, le joueur ne sachant jamais ce qui l'attend.
 
 %----------------------------------------------------------------------------------------
 %	BIBLIOGRAPHY
